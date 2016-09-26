@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FBE_Manipulations\ConnectingInfo.cpp" />
+    <ClCompile Include="FBE_Manipulations\WorkingTemplate.cpp" />
+    <ClCompile Include="FBE_Manipulations\FunctionEvalStability.cpp" />
+    <ClCompile Include="FBE_Manipulations\metrics.cpp" />
+    <ClCompile Include="FBE_Manipulations\newSnapping.cpp" />
+    <ClCompile Include="FBE_Manipulations\TemplateManipulations.cpp" />
+    <ClCompile Include="FBE_Manipulations\geometryOptimizer.cpp" />
+    <ClCompile Include="FBE_Manipulations\internalMotionOptimizer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Manipulations\ConnectingInfo.h" />
+    <ClInclude Include="FBE_Manipulations\WorkingTemplate.h" />
+    <ClInclude Include="FBE_Manipulations\FunctionEvalStability.h" />
+    <ClInclude Include="FBE_Manipulations\metrics.h" />
+    <ClInclude Include="FBE_Manipulations\newSnapping.h" />
+    <ClInclude Include="FBE_Manipulations\TemplateManipulations.h" />
+    <ClInclude Include="FBE_Manipulations\geometryOptimizer.h" />
+    <ClInclude Include="FBE_Manipulations\internalMotionOptimizer.h" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="parser">
+      <UniqueIdentifier>{2622b530-a5bd-4d75-b607-e6a89bf1c4b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{5cf05262-455f-4b0e-b42c-866199a7a05c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{3149b713-f6f7-41cd-8da9-603d1e0a313c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Design\parser.cpp">
+      <Filter>parser</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\component.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\componentTypes.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\connectorsGroup.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\dataTraits.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\design.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\functionality.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\graph.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Design\tree.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Design\parser.h">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\rapidxml.hpp">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\rapidxml_iterators.hpp">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\rapidxml_print.hpp">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\rapidxml_utils.hpp">
+      <Filter>parser</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\componentTypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\connectorsGroup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\dataTraits.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\functionality.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\params.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Design\design.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

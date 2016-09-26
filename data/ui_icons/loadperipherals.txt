@@ -1,0 +1,9 @@
+Basket2 Basket2 0
+HitchA HitchA 0
+PeripheralAntenna PeripheralAntenna 0
+PeripheralCharacterFixed PeripheralCharacterFixed 0
+PeripheralHat PeripheralHat 0
+PeripheralSiggraph PeripheralSiggraph 0
+PeripheralSpoiler PeripheralSpoiler 0
+PeripheralWings PeripheralWings 0
+SnowPlow2 SnowPlow2 0

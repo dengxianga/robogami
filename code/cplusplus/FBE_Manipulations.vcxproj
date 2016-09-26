@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{F16FD9BC-98B3-49A7-9E1F-200EB6A5DF12}</ProjectGuid>
+    <RootNamespace>FBE_data</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\protobuf\src;.\FBE_Kinematics;.\FBE_Temp;.\FBE_Utils;.\FBE_Math;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\ilconcert;.\CPLEX_Studio124\cplex\include;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;./include;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>libnlopt-0.lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\protobuf\src;.\FBE_Kinematics;.\FBE_Temp;.\FBE_Utils;.\FBE_Math;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\ilconcert;.\CPLEX_Studio124\cplex\include;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;./include;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>libnlopt-0.lib;</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="FBE_Math.vcxproj">
+      <Project>{661944dd-71a1-4265-85fd-dbb6a1eb84b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Template.vcxproj">
+      <Project>{55edee9a-19ba-4f1f-9096-93c89917428c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Utils.vcxproj">
+      <Project>{1c256f00-96c0-41e9-865d-a6629dd6441f}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Manipulations\ConnectingInfo.cpp" />
+    <ClCompile Include="FBE_Manipulations\geometryOptimizer.cpp" />
+    <ClCompile Include="FBE_Manipulations\internalMotionOptimizer.cpp" />
+    <ClCompile Include="FBE_Manipulations\WorkingTemplate.cpp" />
+    <ClCompile Include="FBE_Manipulations\FunctionEvalStability.cpp" />
+    <ClCompile Include="FBE_Manipulations\metrics.cpp" />
+    <ClCompile Include="FBE_Manipulations\newSnapping.cpp" />
+    <ClCompile Include="FBE_Manipulations\TemplateManipulations.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Manipulations\ConnectingInfo.h" />
+    <ClInclude Include="FBE_Manipulations\geometryOptimizer.h" />
+    <ClInclude Include="FBE_Manipulations\internalMotionOptimizer.h" />
+    <ClInclude Include="FBE_Manipulations\WorkingTemplate.h" />
+    <ClInclude Include="FBE_Manipulations\FunctionEvalStability.h" />
+    <ClInclude Include="FBE_Manipulations\metrics.h" />
+    <ClInclude Include="FBE_Manipulations\newSnapping.h" />
+    <ClInclude Include="FBE_Manipulations\TemplateManipulations.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

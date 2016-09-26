@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="FBE_CSharpUI.SymmetryChooser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:self="clr-namespace:FBE_CSharpUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+            <Label Content="Constrain Desing Options:"></Label>
+            <CheckBox Name="symmGroundCheck" Content="Ground alignment" VerticalAlignment="Center" IsChecked="False"  ></CheckBox>
+            <CheckBox Name="symmLegWCheck" Content="Equalize leg width" VerticalAlignment="Center" IsChecked="False"  Visibility="Collapsed"></CheckBox>
+            <CheckBox Name="symmLegLCheck" Content="Equalize linkage length" VerticalAlignment="Center" IsChecked="False"  Visibility="Collapsed"></CheckBox> 
+            <CheckBox Name="symmSpacingCheck" Content="Uniform spacing" VerticalAlignment="Center" IsChecked="False"  ></CheckBox>
+            <Button Content="Update" x:Name="updateButton"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
+

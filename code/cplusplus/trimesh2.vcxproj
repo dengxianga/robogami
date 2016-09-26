@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{75DF1798-F43F-42B8-824C-4F32A612AE47}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>trimesh2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="trimesh2\conn_comps.cc" />
+    <ClCompile Include="trimesh2\diffuse.cc" />
+    <ClCompile Include="trimesh2\edgeflip.cc" />
+    <ClCompile Include="trimesh2\faceflip.cc" />
+    <ClCompile Include="trimesh2\filter.cc" />
+    <ClCompile Include="trimesh2\GLCamera.cc" />
+    <ClCompile Include="trimesh2\ICP.cc" />
+    <ClCompile Include="trimesh2\KDtree.cc" />
+    <ClCompile Include="trimesh2\lmsmooth.cc" />
+    <ClCompile Include="trimesh2\overlap.cc" />
+    <ClCompile Include="trimesh2\remove.cc" />
+    <ClCompile Include="trimesh2\reorder_verts.cc" />
+    <ClCompile Include="trimesh2\subdiv.cc" />
+    <ClCompile Include="trimesh2\TriMesh_bounding.cc" />
+    <ClCompile Include="trimesh2\TriMesh_connectivity.cc" />
+    <ClCompile Include="trimesh2\TriMesh_curvature.cc" />
+    <ClCompile Include="trimesh2\TriMesh_grid.cc" />
+    <ClCompile Include="trimesh2\TriMesh_io.cc" />
+    <ClCompile Include="trimesh2\TriMesh_normals.cc" />
+    <ClCompile Include="trimesh2\TriMesh_pointareas.cc" />
+    <ClCompile Include="trimesh2\TriMesh_stats.cc" />
+    <ClCompile Include="trimesh2\TriMesh_tstrips.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\bsphere.h" />
+    <ClInclude Include="include\Color.h" />
+    <ClInclude Include="include\GLCamera.h" />
+    <ClInclude Include="include\ICP.h" />
+    <ClInclude Include="include\lineqn.h" />
+    <ClInclude Include="include\mempool.h" />
+    <ClInclude Include="include\noise3d.h" />
+    <ClInclude Include="include\strutil.h" />
+    <ClInclude Include="include\timestamp.h" />
+    <ClInclude Include="include\TriMesh.h" />
+    <ClInclude Include="include\TriMesh_algo.h" />
+    <ClInclude Include="include\VHashTable.h" />
+    <ClInclude Include="include\XForm.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

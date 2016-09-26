@@ -1,0 +1,152 @@
+package FabByExample.proto.symbolic;
+
+message Parameter {
+    optional int32 id = 1;
+    optional string name = 2;  // optional, for user friendliness
+    optional double default = 3;
+}
+
+message LinearExpr {
+    repeated int32 parameter_id = 1;
+    repeated double coeff = 2;
+    optional double const = 3;
+}
+
+message Point2S {
+    optional LinearExpr x = 1;
+    optional LinearExpr y = 2;
+}
+
+message Point3S {
+    optional LinearExpr x = 1;
+    optional LinearExpr y = 2;
+    optional LinearExpr z = 3;
+}
+
+message Vertex2S {
+    optional int32 id = 1;  // required (for referencing)
+    optional string name = 2;
+    optional Point2S point = 3;
+}
+
+message Edge2S {
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 vertex1_id = 3;
+    optional int32 vertex2_id = 4;
+}
+
+message Face2S {
+    optional int32 id = 1;
+    optional string name = 2;
+    repeated int32 vertex_id = 3;  // required
+    repeated int32 edge_id = 4;  // optional
+}
+
+message Drawing2S {
+    optional int32 id = 1;
+    optional string name = 2;
+    repeated Vertex2S vertex = 3;  // required (for referencing)
+    repeated Edge2S edge = 4;  // optional
+    repeated Face2S face = 5;  // required
+}
+
+message Vertex3S {
+    optional int32 id = 1;  // required (for referencing)
+    optional string name = 2;
+    optional Point3S point = 3;
+}
+
+message Edge3S {
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 vertex1_id = 3;
+    optional int32 vertex2_id = 4;
+}
+
+message Face3S {
+    optional int32 id = 1;
+    optional string name = 2;
+    repeated int32 vertex_id = 3;  // required
+    repeated int32 edge_id = 4;  // optional
+}
+
+message Mesh3S {
+    optional int32 id = 1;
+    optional int32 name = 2;
+    repeated Vertex3S vertex = 3;  // required (for referencing)
+    repeated Edge3S edge = 4;  // optional
+    repeated Face3S face = 5;  // required
+}
+
+// 3x4 matrix, column major
+message AffineMatrix3S {
+    repeated LinearExpr value = 1;
+}
+
+message Transform{
+
+enum TransformType{
+        REVOLUTE_TRANSFORM = 1;
+        PRISMATIC_TRANSFORM = 2;
+
+    }
+	optional Control control = 1;
+	optional Point3S axis =2; //Is a vector
+	optional TransformType type =3;
+	optional double minVal =4; //REALLY optional
+	optional double maxVal =5; //REALLY optional
+	
+}
+
+
+message Control{
+	optional int32 id =1;
+	optional string name =2;
+	optional ControlMappingFunction inputs = 3;
+}
+
+message ControlMappingFunction {
+    optional LinearMappingFuction1D  linear_1 = 1;
+    optional PiecewiseLinearFunction1D piecewiselinear = 2;
+    optional ParametricPiecewiseLinearFunction piecewiseFunction = 3;
+	optional int32 symbolicController =4;
+	optional GrammarControllerMappingFunction grammarFunction= 5;
+}
+
+message ParametricPiecewiseLinearFunction{
+  repeated PWLinear pairs =1;
+}
+
+message GrammarControllerMappingFunction{
+    enum GrammarControllerType {
+        WHEEL = 1;
+        LEG = 2;
+		DOUBLE_SHOULDER =3;
+		DOUBLE_ELBOW = 4;
+    }
+
+	optional GrammarControllerType type = 1;
+	optional double theta = 2;
+	optional int32 N_intervals =3;
+	optional int32 i_interval = 4;
+	optional double multi = 5; 
+}
+
+message LinearMappingFuction1D {
+	optional LinearExpr linearTimeMap = 1;
+}
+
+message PiecewiseLinearFunction1D {
+	repeated TimeAndValuePair timesandvalues = 1;
+}
+
+message TimeAndValuePair{
+	optional double timeStamp = 1;
+	optional double value = 2;
+}
+
+message PWLinear {
+    repeated LinearExpr time = 1;
+    repeated LinearExpr value = 2;
+}

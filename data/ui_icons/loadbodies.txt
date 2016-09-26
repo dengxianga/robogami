@@ -1,0 +1,8 @@
+BodyBasic BodyBasic 0
+BodyBeatle BodyBeatle 0
+BodyCylinder BodyCylinder 0
+BodyHex BodyHex 0
+BodyShoe BodyShoe 0
+BodySleek BodySleek 0
+BodyT BodyT 0
+BodyTrain BodyTrain 0

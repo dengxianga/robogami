@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{3C0DB874-ED22-4E6D-AC0F-1DCF3A738B1B}</ProjectGuid>
+    <RootNamespace>buildTemplates</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>
+    </CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ExecutablePath>%(SolutionDir)\nlopt-2.4.2\nlopt-2.4.2-dll32;$(ExecutablePath)</ExecutablePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\FBE_Kinematics;.\FBE_Printable;.\protobuf\src;.\FBE_Proto;.\FBE_Manipulations;.\FBE_Utils;.\FBE_Math;.\eigen-eigen-5097c01bcdc4;.\include;.\FBE_Temp;.\FBE_Design;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBPROTOBUF_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\Debug;.\Debug\FBE_Manipulations;.\protobuf\vsprojects\Debug</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>libnlopt-0.lib;FBE_Manipulations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /d /y "$(ProjectDir)nlopt-2.4.2\nlopt-2.4.2-dll32\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\FBE_Kinematics;.\FBE_Printable;.\FBE_Proto;.\protobuf\src;.\FBE_Manipulations;.\FBE_Utils;.\FBE_Math;.\eigen-eigen-5097c01bcdc4;.\include;.\FBE_Temp;.\FBE_Design;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <IgnoreSpecificDefaultLibraries>
+      </IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>.\nlopt-2.4.2\nlopt-2.4.2-dll32;.\Release;.\protobuf\vsprojects\Release;.\Release\FBE_Manipulations</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libnlopt-0.lib;FBE_Manipulations.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>
+      </SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy /d /y "$(ProjectDir)nlopt-2.4.2\nlopt-2.4.2-dll32\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="buildTemplates\buildTemplates_main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="FBE_Manipulations.vcxproj">
+      <Project>{f16fd9bc-98b3-49a7-9e1f-200eb6a5df12}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Math.vcxproj">
+      <Project>{661944dd-71a1-4265-85fd-dbb6a1eb84b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Printing.vcxproj">
+      <Project>{abb8d661-3f8a-41b3-815f-cecfd4ba7801}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Proto.vcxproj">
+      <Project>{852f81b0-f3ee-48c4-a34d-de6329d6f446}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Template.vcxproj">
+      <Project>{55edee9a-19ba-4f1f-9096-93c89917428c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Utils.vcxproj">
+      <Project>{1c256f00-96c0-41e9-865d-a6629dd6441f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="protobuf\vsprojects\libprotobuf.vcxproj">
+      <Project>{3e283f37-a4ed-41b7-a3e6-a2d89d131a30}</Project>
+    </ProjectReference>
+    <ProjectReference Include="trimesh2.vcxproj">
+      <Project>{75df1798-f43f-42b8-824c-4f32a612ae47}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

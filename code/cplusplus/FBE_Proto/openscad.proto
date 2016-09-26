@@ -1,0 +1,53 @@
+package FabByExample.proto;
+
+// A parameter defined by an Openscad design.
+message OpenscadParameter {
+    // The name of the parameter. This must be the exact same name as
+    // the variable used in Openscad code.
+    required string name = 1;
+    
+    // The initial value of this parameter.
+    required double initial_value = 2;
+    
+    // The minimum and/or maximum of this parameter.
+    optional double min = 3;
+    optional double max = 4;
+}
+
+// Encodes a design based on evaluating Openscad code.
+message OpenscadDesign {
+    // The list of parameters this design declares. When evaluated, they
+    // will be assigned before running the code.
+    repeated OpenscadParameter parameter = 1;
+    
+    // The raw source code of the OpenSCAD design, assuming the existence
+    // of the declared parameters. Before evaluating this code, code will
+    // be prepended that assigns the parameters. For example, this string
+    // can be:
+    //
+    //   sphere(r=radius);
+    //
+    // where 'radius' is a parameter declared above.
+    required string code = 2;
+}
+
+// Example OpenscadDesign object (pseudocode):
+// OpenscadDesign {
+//     parameter {
+//         name = "radius"
+//         initial_value = 10
+//         min = 3
+//     }
+//     parameter {
+//         name = "cube_size"
+//         initial_value = 20
+//         min = 10
+//         max = 50
+//     }
+//     code = """
+//         difference() {
+//             sphere(r=radius);
+//             cube(cube_size);
+//         }
+//     """
+// }

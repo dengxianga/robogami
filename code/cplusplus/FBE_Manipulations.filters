@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="FBE_Temp\constraints.cpp" />
+    <ClCompile Include="FBE_Temp\ConstraintsEval.cpp" />
+    <ClCompile Include="FBE_Temp\element.cpp" />
+    <ClCompile Include="FBE_Temp\template.cpp" />
+    <ClCompile Include="FBE_Temp\workingTemplate.cpp" />
+    <ClCompile Include="FBE_Temp\tempDatabse.cpp" />
+    <ClCompile Include="FBE_Temp\templateElement.cpp" />
+    <ClCompile Include="FBE_Temp\templateGroup.cpp" />
+    <ClCompile Include="FBE_Temp\element_pattern.cpp" />
+    <ClCompile Include="FBE_Temp\element_single.cpp" />
+    <ClCompile Include="FBE_Temp\patch.cpp" />
+    <ClCompile Include="FBE_Temp\mappingFun.cpp" />
+    <ClCompile Include="FBE_Temp\hierarchyGraphs.cpp" />
+    <ClCompile Include="FBE_Temp\mainTemplate.cpp" />
+    <ClCompile Include="FBE_Temp\semanticDistances.cpp" />
+    <ClCompile Include="FBE_Temp\constraintsPairs.cpp" />
+    <ClCompile Include="FBE_Temp\templateFactory.cpp" />
+    <ClCompile Include="FBE_Temp\validFits.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Temp\constraintTransferer.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Temp\connectorEdge.cpp" />
+    <ClCompile Include="FBE_Temp\snapping.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Temp\ParamVectorMap.cpp" />
+    <ClCompile Include="FBE_Temp\connecting.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Temp\link.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Temp\definitions.cpp" />
+    <ClCompile Include="FBE_Temp\addingPartContext.cpp">
+      <Filter>adding</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Temp\constraints.h" />
+    <ClInclude Include="FBE_Temp\constraintsEval.h" />
+    <ClInclude Include="FBE_Temp\element.h" />
+    <ClInclude Include="FBE_Temp\template.h" />
+    <ClInclude Include="FBE_Temp\workingTemplate.h" />
+    <ClInclude Include="FBE_Temp\tempDatabse.h" />
+    <ClInclude Include="FBE_Temp\templateElement.h" />
+    <ClInclude Include="FBE_Temp\templateGroup.h" />
+    <ClInclude Include="FBE_Temp\element_pattern.h" />
+    <ClInclude Include="FBE_Temp\element_single.h" />
+    <ClInclude Include="FBE_Temp\patch.h" />
+    <ClInclude Include="FBE_Temp\mappingFun.h" />
+    <ClInclude Include="FBE_Temp\hierarchyGraphs.h" />
+    <ClInclude Include="FBE_Temp\mainTemplate.h" />
+    <ClInclude Include="FBE_Temp\semanticDistances.h" />
+    <ClInclude Include="FBE_Temp\constraintsPairs.h" />
+    <ClInclude Include="FBE_Temp\templateFactory.h" />
+    <ClInclude Include="FBE_Temp\validFits.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Temp\constraintTransferer.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Temp\connectorEdge.h" />
+    <ClInclude Include="FBE_Temp\snapping.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Temp\ParamVectorMap.h" />
+    <ClInclude Include="FBE_Temp\connecting.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Temp\link.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Temp\definitions.h" />
+    <ClInclude Include="FBE_Temp\addingPartContext.h">
+      <Filter>adding</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="NewFilter1">
+      <UniqueIdentifier>{c655cead-e052-43b3-9e39-7eb431f1aa79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="adding">
+      <UniqueIdentifier>{d52260f0-cc95-4905-8257-8e3e937efffd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

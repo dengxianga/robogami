@@ -1,0 +1,254 @@
+package FabByExample.proto;
+
+import "symbolic.proto";
+import "openscad.proto";
+
+// A set of templates so that we can encode children without nesting
+message TemplateSet {
+    repeated Template template = 1;
+	optional int32 root_template_id = 2;
+	optional GaitInformation  gaitInfo= 3;
+}
+
+message GaitInformation{
+	repeated SavedGait savedGaits = 1;
+	repeated int32 gaitSequence =2; 
+}
+
+message SavedGait{
+	optional string name = 1;
+	optional double desiredDirection = 2;
+	repeated int32 jointInfo_id =3;
+	repeated double jointInfo_angle =4; 
+}
+
+message Template {
+    optional int32 id = 1;  // required
+    optional string name = 2;
+    repeated symbolic.Parameter parameter = 3;
+    optional MappingFunction mapping_function = 4;
+    optional FeasibleSet feasible_set = 5;
+    repeated int32 child_template_id = 6;
+    repeated Connection connection = 7;
+    repeated Patch patch = 8;
+	optional bool independent = 9;
+	optional Semantics semantics  = 10;
+	repeated symbolic.Point3S contactPoints = 11;
+	repeated ContactInfo contactInfo = 12;
+	optional SymmetryChoices symmetryChoices= 13;
+}
+
+
+message ContactInfo{
+	optional symbolic.Point3S point = 1;
+	optional bool hasBeenConstraint = 2; 
+}
+
+message SymmetryChoices{
+	optional bool symm_ground =1 ;
+	optional bool symm_legW =2;
+	optional bool symm_legL = 3;
+	optional bool symm_spacing = 4;
+}
+
+
+message Semantics{
+    enum PrintMethod {
+        PRINT_AND_FOLD = 1;
+        DIRECT_3D = 2;
+    }
+	enum PartType{
+		LEG = 1;
+		BODY = 2;
+		PERIPHERAL =3;
+		FACE=4;
+		GENERAL = 5;
+		WHEEL = 6;
+	}
+	optional PrintMethod printMethod = 1;
+	optional PartType partType = 2;
+
+}
+
+message Patch{
+    optional int32 id = 1;
+	optional Edge2SPatch edge2SPatch = 2;
+	optional ServoPointPatch servoPointPatch =3;
+	optional ServoLinePatch servoLinePatch =4;
+	optional PeripheralPatch peripheralpatch = 5;
+}
+
+message ServoPointPatch{
+	optional symbolic.Point3S center= 1;
+	repeated double normal = 2;
+	optional symbolic.LinearExpr separation = 3;
+}
+
+
+message ServoSpacingInfo{
+	optional symbolic.LinearExpr alpha = 1;
+	optional  symbolic.LinearExpr separation_h =2;
+	repeated symbolic.LinearExpr separation_w =3; 
+	repeated int32 associatedTemplates = 4;
+}
+
+message ServoLinePatch{
+	optional symbolic.Point3S startPoint = 1;
+	optional symbolic.Point3S endPoint = 2;
+	repeated double normal = 3;
+	repeated ServoSpacingInfo servospacing = 4;
+}
+
+
+message PeripheralPatch{
+	optional int32 edgeId1  = 1;
+	optional int32 edgeId2  = 2;
+	repeated double normal = 3;
+}
+
+message Edge2SPatch{
+	optional int32 edgeId = 1;
+}
+
+message Connection {
+    optional int32 parentPatchRef = 1;
+	repeated int32 patchRef = 2;
+	optional ConnectionMode connectionMode = 3;
+	optional JointConnection jointConnection = 4;
+	optional FillConnection fillConnection = 5;
+}
+
+message ConnectionMode {
+	optional FoldConnection foldConnection = 1;
+	optional BendConnection bendConnection = 2;
+	optional FlexConnection flexConnection = 3;
+	optional JointConnection jointConnection = 4;
+	// should also have JointConnection and FixedConnection
+}
+
+message FoldConnection {
+	optional double angle = 1;
+}
+
+message JointConnection {
+	optional double angle = 1;
+	optional Articulation articulations = 2;
+	optional PrintType printType = 3;
+}
+
+message PrintType {
+    optional bool ballAndSocket = 1;
+    optional bool prismatic = 2;
+    optional bool revolute = 3;
+	optional bool none = 4;
+}
+
+message BendConnection {
+	optional double angle = 1;
+}
+
+message FillConnection {
+    optional double angle = 1;
+}
+
+message FlexConnection {
+	optional double angle = 1;
+}
+
+// Abstractly, a function that takes a list of parameters and returns
+// a mesh or a 2D drawing
+message MappingFunction {
+    optional LinearMappingFunction3 linear_3 = 1;
+    optional LinearMappingFunction2 linear_2 = 2;
+    optional CompositionMappingFunction composition = 3;
+    optional ExternalMeshAffineMappingFunction external_mesh_affine = 4;
+	optional ScadMappingFunction scad=5;
+	optional SymbolicWayPointsMappingFunction symbolicWayPointsMappingFunction = 6; 
+}
+
+
+message SymbolicWayPointsMappingFunction{
+	repeated SymbolicWayPoint symbolicWayPoint =1 ;
+}
+
+message SymbolicWayPoint{
+    optional symbolic.LinearExpr time = 1;
+    optional symbolic.LinearExpr value = 2;
+	optional bool contact =3;
+	optional bool ismoving =4;
+}
+
+
+// A mapping function that returns the scad filename
+message ScadMappingFunction {
+	optional string scad_filename=1;
+	optional OpenscadDesign design = 2;
+}
+
+// A mapping function that returns the mesh after some transformation
+message ExternalMeshAffineMappingFunction {
+    optional string stl_filename = 1;
+	optional bytes stl_data = 2;
+    optional symbolic.AffineMatrix3S transform = 3;
+}
+
+// A mapping function that returns the composition of the outputs of
+// other templates (e.x. children templates)
+message CompositionMappingFunction {
+    repeated int32 template_id = 1;
+}
+
+// A mapping function that represents the mesh as a linear combination
+// of the parameters. For this mapping function, there must be at least
+// three parameters, and the first three should mean the translation.
+message LinearMappingFunction3 {
+    optional symbolic.Mesh3S mesh = 1;
+}
+
+// A mapping function that represents the 2D drawing as a linear
+// combination of the parameters.
+message LinearMappingFunction2 {
+    optional symbolic.Drawing2S drawing = 1;
+}
+
+// Abstractly, the set of allowed vectors of parameters for the template
+message FeasibleSet {
+    optional ConstraintList constraint_list = 1;
+}
+
+// A feasible set represented as a list of constraints
+message ConstraintList {
+    repeated Constraint constraint = 1;
+    repeated int32 inherited_template_id = 2;
+}
+
+// A single constraint
+message Constraint {
+    optional LinearConstraint linear_constraint = 1;
+}
+
+// A linear constraint, which represents either linear_expr = 0 or
+// linear_expr < 0
+message LinearConstraint {
+    enum ConstraintSemantics {
+        GENERAL =1;
+		SYMM_GROUND =2;
+		SYMM_LEGW =3;
+		SYMM_LEGL =4;
+		SYMM_SPACING = 5;
+    }
+    enum Type {
+        EQUALITY = 1;
+        LESS_THAN_ZERO = 2;
+    }
+    optional symbolic.LinearExpr expr = 1;
+    optional Type type = 2;
+	optional ConstraintSemantics  constraintSemantics=3;
+}
+
+message Articulation{
+	repeated symbolic.Transform transforms = 1;
+	optional symbolic.Point3S center = 2;
+}
+
+

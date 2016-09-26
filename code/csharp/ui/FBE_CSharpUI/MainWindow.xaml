@@ -1,0 +1,833 @@
+﻿<Window x:Class="FBE_CSharpUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:self="clr-namespace:FBE_CSharpUI"
+        xmlns:h="http://helixtoolkit.codeplex.com"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:External"
+        Title="Interactive Robogami" Height="810" Width="1440" KeyDown="MainWindow_OnKeyDown" KeyUp="MainWindow_OnKeyUp"
+        Activated="MainWindow_OnActivated" Deactivated="MainWindow_OnDeactivated">
+    <Window.Resources>
+        <ResourceDictionary>
+            <BitmapImage x:Key="NewButtonImage" UriSource="Resources\new.png"></BitmapImage>
+            <BitmapImage x:Key="DeleteButtonImage" UriSource="Resources\delete.png"></BitmapImage>
+            <BitmapImage x:Key="UpButtonImage" UriSource="Resources\up2.png"></BitmapImage>
+            <BitmapImage x:Key="DownButtonImage" UriSource="Resources\down2.png"></BitmapImage>
+            <BitmapImage x:Key="SimulateButtonImage" UriSource="Resources\sim2.png"></BitmapImage>
+            <BitmapImage x:Key="AnimateButtonImage" UriSource="Resources\play.png"></BitmapImage>
+            <BitmapImage x:Key="ConnectorButtonImage" UriSource="Resources\connect.png"></BitmapImage>
+            <BitmapImage x:Key="StablizeButtonImage" UriSource="Resources\cube.png"></BitmapImage>
+            <BitmapImage x:Key="SpeedButtonImage" UriSource="Resources\speed.png"></BitmapImage>
+            <BitmapImage x:Key="GeometryButtonImage" UriSource="Resources\cube.png"></BitmapImage>
+            <BitmapImage x:Key="CostButtonImage" UriSource="Resources\dollar.png"></BitmapImage>
+            <BitmapImage x:Key="clearButtonImage" UriSource="Resources\clear.png"></BitmapImage>
+            <BitmapImage x:Key="saveButtonImage" UriSource="Resources\save.png"></BitmapImage>
+            <BitmapImage x:Key="exitButtonImage" UriSource="Resources\exit.png"></BitmapImage>
+            <BitmapImage x:Key="moveButtonImage" UriSource="Resources\move.png"></BitmapImage>
+            <BitmapImage x:Key="rotateButtonImage" UriSource="Resources\rotate.png"></BitmapImage>
+            <BitmapImage x:Key="refreshButtonImage" UriSource="Resources\refresh.png"></BitmapImage>
+            <BitmapImage x:Key="scaleButtonImage" UriSource="Resources\scale.png"></BitmapImage>
+            <BitmapImage x:Key="measureButtonImage" UriSource="Resources\measure.png"></BitmapImage>
+            <BitmapImage x:Key="GuideButtonImage" UriSource="Resources\up2.png"></BitmapImage>
+            <BitmapImage x:Key="translatePartButtonImage" UriSource="Resources\left3.png"></BitmapImage>
+            <BitmapImage x:Key="searchButtonImage" UriSource="Resources\search.png"></BitmapImage>
+            <BitmapImage x:Key="snapButtonImage" UriSource="Resources\snap.png"></BitmapImage>
+            <BitmapImage x:Key="treeButtonImage" UriSource="Resources\tree.png"></BitmapImage>
+            <BitmapImage x:Key="printButtonImage" UriSource="Resources\3d.png"></BitmapImage>
+            <BitmapImage x:Key="mutiSnapButtonImage" UriSource="Resources\multisnap.png"></BitmapImage>
+            <BitmapImage x:Key="FadeConnectorButtonImage" UriSource="Resources\conn_view.png"></BitmapImage> 
+            <BitmapImage x:Key="MinButtonImage" UriSource="Resources\min.png"></BitmapImage>
+            <BitmapImage x:Key="MaxButtonImage" UriSource="Resources\max.png"></BitmapImage>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="TreeListView.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" CanExecute="CanAlwaysExecute" Executed="HandleNewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DirectSave" CanExecute="CanAlwaysExecute" Executed="HandleDirectSave"></CommandBinding>
+        <CommandBinding Command="Save" CanExecute="CanSaveExecute" Executed="HandleSaveCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.SaveGeometry" CanExecute="CanSaveGeometryExecute" Executed="HandleSaveGeometryCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.SelectParent" CanExecute="CanSelectParentExecute" Executed="HandleSelectParentCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.SelectChild" CanExecute="CanSelectChildExecute" Executed="HandleSelectChildCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DeleteSelected" CanExecute="CanDeleteSelectedExecute" Executed="HandleDeleteSelectedCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Simulate" CanExecute="CanSimulateExecute" Executed="HandleSimulateCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Animate" CanExecute="CanAnimateExecute" Executed="HandleAnimateCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.AnimateSlow" CanExecute="CanAnimateSlowExecute" Executed="HandleAnimateSlowCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ChangeAnimParams" CanExecute="CanAnimateSlowExecute" Executed="HandleEditAnimParams"></CommandBinding>
+        <CommandBinding Command="self:UICommands.GuideManipulation" CanExecute="CanGuideManipulationExecute" Executed="HandleGuideManipulationCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DisableGuidance" CanExecute="CanAlwaysExecute" Executed="HandleDisableAllStabilityGuidance"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ForwardTravelA" CanExecute="CanAlwaysExecute" Executed="HandlForwardTravelA"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ForwardTravelB" CanExecute="CanAlwaysExecute" Executed="HandleForwardTravelB"></CommandBinding>
+        <CommandBinding Command="self:UICommands.NoTask" CanExecute="CanAlwaysExecute" Executed="HandleNoTask"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DesignCar" CanExecute="CanAlwaysExecute" Executed="HandleDesignCar"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ViewGait" CanExecute="CanViewGaitExecute" Executed="HandleViewGaitCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ViewAnimPoses" CanExecute="CanViewGaitExecute" Executed="HandleViewAnimPosesCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.AvoidObstacle" CanExecute="CanAlwaysExecute" Executed="HandleAvoidObstacle"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Stablize" CanExecute="CanStablizeExecute" Executed="HandleStablizeCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.SnapToGround" CanExecute="CanSnapToGroundExecute" Executed="HandleSnapToGroundCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DeleteTemplate" CanExecute="CanDeleteTemplateExecute" Executed="HandleDeleteTemplateCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.UpdateConnectors" CanExecute="CanAddConnectorExecute" Executed="HandleAddConnectorCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.HighlightConnectors" CanExecute="CanAlwaysExecute" Executed="HandleShowConnectorsCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.UsePerspectiveCamera" CanExecute="CanAlwaysExecute" Executed="HandleUsePerspectiveCameraCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Connect" CanExecute="CanConnectExecute" Executed="HandleConnectCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Snap" CanExecute="CanSnapExecute" Executed="HandleSnapCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.MultiSnap" CanExecute="CanMultiSnapExecute" Executed="HandleMultiSnapCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ChangeMaterial" CanExecute="CanChangeMaterialExecute" Executed="HandleChangeMaterialCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.Exit" CanExecute="CanAlwaysExecute" Executed="HandleExitCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.SaveView" CanExecute="CanSaveViewExecute" Executed="HandleSaveViewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.DeleteAllSavedViews" CanExecute="CanDeleteAllSavedViewsExecute" Executed="HandleDeleteAllSavedViewsCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.LoadView1" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.LoadView2" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.LoadView3" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.LoadView4" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.PreventFurtherOverlap" CanExecute="CanAlwaysExecute" Executed="HandlePreventFurtherOverlapCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ForceReflection" CanExecute="CanAlwaysExecute" Executed="HandleForceReflectionCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.ShowOverlaps" CanExecute="CanAlwaysExecute" Executed="HandleShowOverlapsCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.RevertToOriginal" CanExecute="CanAlwaysExecute" Executed="HandleRevertToOriginal"></CommandBinding>
+    </Window.CommandBindings>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Command="New">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource NewButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Open From File" Click="File_Open_Click">
+                <MenuItem.Icon>
+                    <self:AutoGreyableImage  Source="{StaticResource searchButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                </MenuItem.Icon>
+            </MenuItem>
+                <MenuItem Header="_Save Template" Command="Save">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource saveButtonImage}" Width="20" Height="20"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save _Geometry" Command="self:UICommands.SaveGeometry">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource saveButtonImage}" Width="20" Height="20"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Save _Drawing as SVG" Click="SaveDrawingAsSVGClick">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource saveButtonImage}" Width="20" Height="20"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Reload" Command="self:UICommands.Reload">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource refreshButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="E_xit" Command="self:UICommands.Exit">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource exitButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="Select _Parent" Command="self:UICommands.SelectParent">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource treeButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Select _Child" Command="self:UICommands.SelectChild">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource DownButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Update Connectors" Command="self:UICommands.UpdateConnectors">
+
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource SimulateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Delete Selection" Command="self:UICommands.DeleteSelected">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource DeleteButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Delete Selected _Template" Command="self:UICommands.DeleteTemplate"/>
+                <Separator/>
+                <MenuItem Header="_Connect" Command="self:UICommands.Connect">
+                <MenuItem.Icon>
+                    <self:AutoGreyableImage  Source="{StaticResource ConnectorButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                </MenuItem.Icon>
+                </MenuItem>
+                
+                <MenuItem Header="_Snap to Ground" Command="self:UICommands.SnapToGround">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource DeleteButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Rotate Y 180 degrees" Click="RotateY180DegClick"/>
+                <Separator/>
+                <MenuItem Header="_Snap" Command="self:UICommands.Snap">
+                    <MenuItem.Icon>
+                    <self:AutoGreyableImage  Source="{StaticResource snapButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_MultiSnap" Command="self:UICommands.MultiSnap" >
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource mutiSnapButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Prevent Further Overlaps" Command="self:UICommands.PreventFurtherOverlap" IsCheckable="True" IsChecked="True"/>
+                <MenuItem Header="Show _Overlaps" Command="self:UICommands.ShowOverlaps" IsCheckable="True" IsChecked="False"/>
+                <MenuItem Header="_Enable Reflection" Command="self:UICommands.ForceReflection" IsCheckable="True" IsChecked="False"/>
+            </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="Use _Perspective Camera" Command="self:UICommands.UsePerspectiveCamera" x:Name="UsePerspectiveCameraMenuItem" IsCheckable="True"/>
+                <Separator/>
+                <MenuItem Header="_Highlight Connectors" Command="self:UICommands.HighlightConnectors" x:Name="ShowConnectorsMenuItem">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource FadeConnectorButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Save View" Command="self:UICommands.SaveView">
+                <MenuItem.Icon>
+                    <self:AutoGreyableImage  Source="{StaticResource saveButtonImage}" Width="20" Height="20"></self:AutoGreyableImage>
+                </MenuItem.Icon>
+            </MenuItem>
+            <Separator x:Name="SavedViewsBegin"/>
+
+                <Separator x:Name="SavedViewsEnd"/>
+                <MenuItem Header="Clear All Saved Views">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource clearButtonImage}" Width="20" Height="20"></self:AutoGreyableImage>
+                    </MenuItem.Icon>               
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Action">
+                <MenuItem Header="_Simulate" Command="self:UICommands.Simulate" x:Name="SimulateMenuItem" IsCheckable="True">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource SimulateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Animation Parameters" Command="self:UICommands.ChangeAnimParams">
+                </MenuItem>
+                <Separator/>
+                <MenuItem Header="_Animate" Command="self:UICommands.Animate">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource AnimateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Animate Slow Motion" Command="self:UICommands.AnimateSlow">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource AnimateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_View Animation Poses" Command="self:UICommands.ViewAnimPoses">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource AnimateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>  
+                <MenuItem Header="_View Gait" Command="self:UICommands.ViewGait">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource AnimateButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Drawing Type" Visibility="Collapsed">
+                <MenuItem Header="_Mesh" Click="Drawing_Type_Mesh_Click" />
+                <MenuItem Header="_Vertices" Click="Drawing_Type_Vertices_Click" />
+            </MenuItem>
+            <MenuItem Header="_Mesh Type" Visibility="Collapsed">
+                <MenuItem Header="_Normal" Click="Mesh_Type_Normal_Click" />
+                <MenuItem Header="_Point Cloud" Click="Mesh_Type_Point_Cloud_Click" />
+                <MenuItem Header="_Bounding Box" Click="Mesh_Type_Box_Click" />
+            </MenuItem>
+            <MenuItem Header="_Tasks">
+                <MenuItem Header="_ForwardTravel: Mode A" Name ="ForwardModeA" Command="self:UICommands.ForwardTravelA" IsCheckable="True"/>
+                <MenuItem Header="_ForwardTravel: Mode B" Name ="ForwardModeB" Command="self:UICommands.ForwardTravelB" IsCheckable="True" IsChecked="False"/>
+                <MenuItem Header="_Design a Car" Name ="DesignCar" Command="self:UICommands.DesignCar" IsCheckable="True"/>
+                <MenuItem Header="_Avoid Obstacle" Name ="AvoidObstable" Command="self:UICommands.AvoidObstacle" IsCheckable="True"/>
+                <MenuItem Header="_Clear" Name ="Clear" Command="self:UICommands.NoTask" />
+            </MenuItem>
+            <MenuItem Header="Print">
+                <MenuItem Header="_Generate STL" Click="Print_Generate_STL_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource printButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Refresh Print View" Click="Print_Refresh_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource refreshButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Stabilize">
+                <MenuItem Header="_Optimize None" Click="Optimize_None_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource SpeedButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Optimize speed" Click="Optimize_Speed_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource SpeedButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Optimize geometry" Click="Optimize_Geometry_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource GeometryButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Optimize cost" Click="Optimize_Cost_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource CostButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_EvalOptimization" Click="EvalOptimization_Click">
+                    <MenuItem.Icon>
+                        <self:AutoGreyableImage  Source="{StaticResource SpeedButtonImage}" Width="24" Height="24"></self:AutoGreyableImage>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <ToolBarPanel DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="New">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=NewButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">New</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Command="self:UICommands.DirectSave">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=saveButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Save</TextBlock>
+                    </StackPanel>
+                </Button>     
+                <Button Command="self:UICommands.SelectParent">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=treeButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Select Parent</TextBlock>
+                    </StackPanel>
+                </Button>
+                <!--                <Button Command="self:UICommands.SelectChild">-->
+                <!--                    <StackPanel Orientation="Horizontal">-->
+                <!--                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=DownButtonImage}" Width="24"></self:AutoGreyableImage>-->
+                <!--                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Select Child</TextBlock>-->
+                <!--                    </StackPanel>-->
+                <!--                </Button>-->
+                <Button Command="self:UICommands.DeleteSelected">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=DeleteButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Delete</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Command="self:UICommands.Connect" >
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=ConnectorButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Connect</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Separator></Separator>
+                <ToggleButton Command="self:UICommands.Simulate" x:Name="SimulateButton" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=SimulateButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Simulate</TextBlock>
+                    </StackPanel>
+                </ToggleButton>
+                <!--<Button Command="self:UICommands.Animate" >
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=AnimateButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
+                    </StackPanel>
+                </Button>-->
+                <Button Click="HandleStartTimer"  >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Start Task</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Click="HandleEndTimer" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">End Task</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Command="self:UICommands.Stablize" Visibility="Collapsed" >
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=StablizeButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stablize</TextBlock>
+                    </StackPanel>
+                </Button>
+                <RadioButton Name ="GuideManipuations"  GroupName="guidemanipulations" Command="self:UICommands.GuideManipulation" >
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=GuideButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Guide Manipulation</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <Button Command="self:UICommands.UpdateConnectors" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=ConnectorButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Update Connectors</TextBlock>
+                    </StackPanel>
+                </Button>
+                <ToggleButton Command="self:UICommands.HighlightConnectors" x:Name="ShowConnectorsButton" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=FadeConnectorButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Highlight Connectors</TextBlock>
+                    </StackPanel>
+                </ToggleButton>
+                <Separator></Separator>
+                <RadioButton x:Name="PointerButton" Click="PointerButton_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=moveButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Move</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="RotationButton" Click="RotationButton_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=rotateButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Rotate</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name ="ScaleButton" Click="ScaleButton_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=scaleButtonImage}" Width="20"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Scale</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name ="TranslatePartButton" Click="TranslatePartButton_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=translatePartButtonImage}" Width="20"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Translate</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name ="MeasureButton" Click="MeasureButton_OnClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=measureButtonImage}" Width="20"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Measure</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                <ToolBar>
+                </ToolBar>
+                <RadioButton Name ="ShowGhost" GroupName="ShowGhost" Click="ShowGhost_onClick" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=translatePartButtonImage}" Width="20"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Show Ghost</TextBlock>
+                    </StackPanel>
+                </RadioButton>
+                   <Button Name="RevertToOriginal"  Command="self:UICommands.RevertToOriginal" Visibility="Collapsed">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=GuideButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Revert to Original</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Command="self:UICommands.Stablize" >
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=StablizeButtonImage}" Width="24"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Optimize</TextBlock>
+                    </StackPanel>
+                </Button>
+            </ToolBar>
+        </ToolBarPanel>
+        <Grid x:Name="ContainerGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="500*"/>
+                <ColumnDefinition Width="217*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="MeshView"  Grid.Column="1" Grid.RowSpan="2" Visibility="Collapsed"/>
+            <Rectangle x:Name ="DeselectBox" Fill="White" Grid.Column ="1" Grid.RowSpan="1" Visibility="Visible"/>
+            <DockPanel LastChildFill="True" Grid.Column="1" Grid.RowSpan="1">
+                <TextBox DockPanel.Dock="Bottom" Name="CommandBox" Margin="10 3 10 3" KeyDown="CommandBox_OnKeyDown"></TextBox>
+                <Grid>
+                <h:HelixViewport3D x:Name="NewMeshView" Visibility="Visible"/>
+                <Viewport3D Name="OverlayView" Camera="{Binding ElementName=NewMeshView, Path=Camera}">
+                </Viewport3D>
+                <Canvas Name="Overlay2D" ClipToBounds="True" Grid.Column="0" Grid.Row="0">
+                </Canvas>
+                </Grid>
+            </DockPanel>
+            <!--
+            /*<Grid Grid.Column="3" Grid.Row="1" x:Name="DrawingGrid">
+                <Canvas Background="#7EF0F0F0" x:Name="DrawingCanvas">
+
+                </Canvas>
+                <Button Width="24" Height="24" VerticalAlignment="Top" HorizontalAlignment="Left" Click="DrawingMaximizeClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=MaxButtonImage}" Width="18"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Update Connectors</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Width="24" Height="24" VerticalAlignment="Top" HorizontalAlignment="Right" Click="DrawingMinimizeClick">
+                    <StackPanel Orientation="Horizontal">
+                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=MinButtonImage}" Width="18"></self:AutoGreyableImage>
+                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Update Connectors</TextBlock>
+                    </StackPanel>
+                </Button>
+            </Grid>-->
+            <TabControl Grid.Row="0" Grid.RowSpan="1" Grid.Column="0">
+                <TabItem Header="Bodies" Name= "bodiesTab">
+                    <Grid Background="#FFF7F7F7">
+                        <ScrollViewer>
+                            <WrapPanel x:Name="SidebarPanelBodies"/>
+                        </ScrollViewer>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Legs" Name="legsTab" >
+                    <Grid Background="#FFF7F7F7">
+                        <ScrollViewer>
+                            <WrapPanel x:Name="SidebarPanelLegs"/>
+                        </ScrollViewer>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Wheels" Name="wheelsTab">
+                    <Grid Background="#FFF7F7F7">
+                        <ScrollViewer>
+                            <WrapPanel x:Name="SidebarPanelWheels"/>
+                        </ScrollViewer>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Beams" Name="beamsTab" Visibility="Collapsed">
+                    <Grid Background="#FFF7F7F7">
+                        <ScrollViewer>
+                            <WrapPanel x:Name="SidebarPanelBeams"/>
+                        </ScrollViewer>
+
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Peripherals" Name= "peripheralsTab">
+                    <Grid Background="#FFF7F7F7">
+                        <ScrollViewer>
+                            <WrapPanel x:Name="SidebarPanelPeripherals"/>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <!--<TabItem Header="...">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>-->
+            </TabControl>
+            <TabControl Grid.Row="0" Grid.RowSpan="3" Grid.Column="2">
+                <TabItem Header="Drawing">
+                    <Grid Background="#FFE5E5E5">
+                        <Canvas Background="#20000000" x:Name="DrawingCanvas2" Grid.ColumnSpan="2"></Canvas>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="SCAD" Visibility="Collapsed">
+                    <DockPanel LastChildFill="True">
+                        <Button DockPanel.Dock="Bottom" Margin="0 5 0 0" Click="SaveScadDesignButtonClick">Save</Button>
+                        <self:SCADEditor x:Name="ScadEditor">
+                            
+                        </self:SCADEditor>
+                    </DockPanel>
+                </TabItem>
+                <TabItem Header="Print">
+                    <Grid>
+                        <h:HelixViewport3D x:Name="PrintView"></h:HelixViewport3D>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Parameters" Visibility="Collapsed">
+                    <Grid Background="#FFF7F7F7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="92*" />
+                            <ColumnDefinition Width="88*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Height="451" HorizontalAlignment="Left" Name="stackPanelParameters" VerticalAlignment="Top" Width="180" Grid.ColumnSpan="2" Background="#FFEFEFEF"></StackPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Metrics" IsSelected="true">
+                    <Grid>
+                        <DataGrid Name="MetricsGrid" IsReadOnly="True">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Fabrication" Binding="{Binding Path=FabCost}" />
+                                <DataGridTextColumn Header="" Binding="{Binding Path= Cost}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+
+                        
+                        <DataGrid Name="MetricsGrid1" IsReadOnly="True" Margin="0,90,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics1_SelectionChanged" SelectionMode="Single"  ItemsSource="{Binding}" >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Black" />
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="BorderBrush" Value="White" />
+                                            <Setter Property="BorderThickness"  Value="0" />
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                       </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="" Binding="{Binding Path=modelName}" />
+                                <DataGridTextColumn Header="Speed (mm/s)" Binding="{Binding Path= speed}" />
+                                <DataGridTextColumn Header="Wobbliness (rad)" Binding="{Binding Path= wobbliness}" />
+                                <DataGridTextColumn Header="Slip (mm)" Binding="{Binding Path= slip}" />
+
+                            </DataGrid.Columns>
+
+                            
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ID}" Value="-1">
+                                            <Setter Property="Background" Value="White"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="0">
+                                            <Setter Property="Background" Value="#d0f3fb"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="1">
+                                            <Setter Property="Background" Value="#ffe0cc"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="2">
+                                            <Setter Property="Background" Value="#d8f3dd"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="3">
+                                            <Setter Property="Background" Value="#eed0fb"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="4">
+                                            <Setter Property="Background" Value="#fffccc"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="5">
+                                            <Setter Property="Background" Value="#f9dad2"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="6">
+                                            <Setter Property="Background" Value="#d0d2fb"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="7">
+                                            <Setter Property="Background" Value="#e7f3d8"></Setter>
+                                        </DataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                        </DataGrid>
+
+                        <DataGrid Name="MetricsGrid1B" IsReadOnly="True" Margin="0,220,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics2_SelectionChanged" SelectionMode="Single"   ItemsSource="{Binding}" >
+                            <DataGrid.Resources>
+                                <Style TargetType="{x:Type DataGridCell}">
+                                    <Style.Triggers>
+                                        <Trigger Property="DataGridCell.IsSelected" Value="True">
+                                            <Setter Property="Background" Value="Black" />
+                                            <Setter Property="Foreground" Value="White"/>
+                                            <Setter Property="BorderBrush" Value="White" />
+                                            <Setter Property="BorderThickness"  Value="0" />
+                                            <Setter Property="FontWeight" Value="Bold"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="" Binding="{Binding Path=modelName}" />
+                                <DataGridTextColumn Header="Curvature (1/m)" Binding="{Binding Path= curvature}" />
+                                <DataGridTextColumn Header="Variance (mm)" Binding="{Binding Path= variance}" />
+                                <DataGridTextColumn Header="Turn angle (deg)" Binding="{Binding Path= angle}" />
+                            </DataGrid.Columns>
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ID}" Value="0">
+                                            <Setter Property="Background" Value="#d0f3fb"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="1">
+                                            <Setter Property="Background" Value="#ffe0cc"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="2">
+                                            <Setter Property="Background" Value="#d8f3dd"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ID}" Value="3">
+                                            <Setter Property="Background" Value="#eed0fb"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="4">
+                                            <Setter Property="Background" Value="#fffccc"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="5">
+                                            <Setter Property="Background" Value="#f9dad2"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="6">
+                                            <Setter Property="Background" Value="#d0d2fb"></Setter>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ID}" Value="7">
+                                            <Setter Property="Background" Value="#e7f3d8"></Setter>
+                                        </DataTrigger>
+
+
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                        </DataGrid>                       
+                        <DataGrid Name="MetricsGrid2" IsReadOnly="True" Margin="0,200,0,15" Visibility="Collapsed">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="" Binding="{Binding Path=Param}" />
+                                <DataGridTextColumn Header="Speed Objective" Binding="{Binding Path=error1}" />
+                                <DataGridTextColumn Header="Wobbliness Objective" Binding="{Binding Path=error2}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <DataGrid Name="MetricsGridSpeed" IsReadOnly="True" Margin="0,360,0,24" Visibility="Collapsed">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="" Binding="{Binding Path=Name}" />
+                                <DataGridTextColumn Header="" Binding="{Binding Path= val}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                        <Label Content="Trajectory:" Margin="0,350,0,0"/>
+                        <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="0,370,0,24" Grid.ColumnSpan="2"></Canvas>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Symmetry">
+                    <Grid>
+                        <ScrollViewer>
+                            <self:SymmetryChooser x:Name="symmetryChooser"></self:SymmetryChooser>
+                        </ScrollViewer>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Debugging" Visibility="Collapsed">
+                    <Grid>
+                        <local:TreeListView x:Name="DebugView">
+                            <local:TreeListView.Columns>
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <local:TreeListViewExpander/>
+                                                <TextBlock Text="{Binding Path=name}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <GridViewColumn>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Path=value}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </local:TreeListView.Columns>
+                        </local:TreeListView>
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+
+
+            <TabControl Grid.Row="3" Grid.ColumnSpan="2" Name="GaitTabControl" SelectionChanged="updateTheSelectedGaitTab_clicked" >
+                <TabItem Header="Edit" Name="EditGaitTab" >
+                    <Grid >
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+
+                            <StackPanel Orientation="Vertical" >
+                                <StackPanel Orientation="Horizontal" Name="EditTabControlOptions">
+                                    <ComboBox  Name="GaitList_ComboBox" Width="120"  SelectedItem="0" SelectionChanged="GaitList_ComboBox_SelectionChanged"/>
+ 
+                                    <!--<Label Content="Desired Curvature:" Margin="100,0,0,0"/>
+                                    <xctk:DoubleUpDown Name="InputCurvature" Height="30" Value="0.00" FormatString="F" ValueChanged="ChangeDesiredDirectionEvent_clicked"/>
+                                    -->
+
+                                    <Label Content="Name:" Margin="100,0,0,0" />
+                                    <TextBox Name ="RenameGaitOptionBox" Width="150" HorizontalAlignment="Left" Text="name"/>
+                                    <Button Width="100" Click="RenameEvent_clicked">
+                                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Update</TextBlock>
+                                    </Button>
+
+                                    <Button Width="100" Click="PreviewGait_clicked"  Margin="50,0,0,0" >
+                                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Preview</TextBlock>
+                                    </Button>
+
+                                    <Button Width="100" Click="AnimateGait_clicked"  Margin="50,0,0,0" >
+                                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
+                                    </Button>
+
+
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+                                    <Grid>
+                                        <Canvas x:Name="DrawingGaitCanvas" Height="200" Width="300" Margin="0, -50,0,0"></Canvas>
+                                    </Grid>
+                                    <Grid>
+                                        <StackPanel Orientation="Horizontal"  x:Name="angleEditors"></StackPanel>
+                                    </Grid>
+
+                                </StackPanel>
+
+
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Grid>
+
+                </TabItem>
+                <TabItem Header="Suggestions" Name="SuggestionsTab">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" x:Name="alternativeViews">
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" x:Name="alternativeViews2">
+                            </StackPanel>
+
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Motion Sequence" Name="SequenceTab" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+               
+                            <RowDefinition Height="150*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="100*"/>
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Gait Options:" Margin="20,0,0,0" Grid.Row="0"/>
+                        <Canvas x:Name="GaitOptionsCanvas" Grid.Row="0" ></Canvas>
+
+
+                        
+                        <Label Content="Motion sequence:" Margin="20,0,0 0" Grid.Row="2"></Label>
+
+                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,0,0" Grid.Row="2" >
+                            <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
+                        </Button>
+
+                        <Label Content="Length of motion sequence:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
+                        <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
+
+                        <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas"></Canvas>
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Margin="0,0,0,0" Width="5" Grid.RowSpan="2"/>
+            <GridSplitter Grid.Column="2" HorizontalAlignment="Left" Margin="-5,0,0,0" Width="5" Grid.RowSpan="3"/>
+            <GridSplitter Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" />
+
+                  </Grid>
+    </DockPanel>
+</Window>

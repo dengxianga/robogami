@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="glog">
+      <UniqueIdentifier>{d5e6c789-17a8-45c6-8868-d8a3a3008613}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Utils\fileIO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\debugging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\fast_hashmap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\commandlineflags.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\config.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\googleinit.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\log_severity.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\mutex.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\port.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\raw_logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\stl_logging.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\utilities.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+    <ClInclude Include="FBE_Utils\glog\vlog_is_on.h">
+      <Filter>glog</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Utils\fileIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\debugging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\glog\logging.cc">
+      <Filter>glog</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\glog\port.cc">
+      <Filter>glog</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\glog\raw_logging.cc">
+      <Filter>glog</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\glog\utilities.cc">
+      <Filter>glog</Filter>
+    </ClCompile>
+    <ClCompile Include="FBE_Utils\glog\vlog_is_on.cc">
+      <Filter>glog</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

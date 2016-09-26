@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Math\CenterOfMass.h" />
+    <ClInclude Include="FBE_Math\drawing.h" />
+    <ClInclude Include="FBE_Math\FunctionEval.h" />
+    <ClInclude Include="FBE_Math\GeometricOperations.h" />
+    <ClInclude Include="FBE_Math\mathVec.h" />
+    <ClInclude Include="FBE_Math\mesh.h" />
+    <ClInclude Include="FBE_Math\myOptimizer.h" />
+    <ClInclude Include="FBE_Math\poly2tri\common\shapes.h" />
+    <ClInclude Include="FBE_Math\poly2tri\common\utils.h" />
+    <ClInclude Include="FBE_Math\poly2tri\poly2tri.h" />
+    <ClInclude Include="FBE_Math\poly2tri\sweep\advancing_front.h" />
+    <ClInclude Include="FBE_Math\poly2tri\sweep\cdt.h" />
+    <ClInclude Include="FBE_Math\poly2tri\sweep\sweep.h" />
+    <ClInclude Include="FBE_Math\poly2tri\sweep\sweep_context.h" />
+    <ClInclude Include="FBE_Math\ReducedEval.h" />
+    <ClInclude Include="FBE_Math\symbolic.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Math\GeometricOperations.cpp" />
+    <ClCompile Include="FBE_Math\mathVec.cpp" />
+    <ClCompile Include="FBE_Math\myOptimizer.cpp" />
+    <ClCompile Include="FBE_Math\poly2tri\common\shapes.cc" />
+    <ClCompile Include="FBE_Math\poly2tri\sweep\advancing_front.cc" />
+    <ClCompile Include="FBE_Math\poly2tri\sweep\cdt.cc" />
+    <ClCompile Include="FBE_Math\poly2tri\sweep\sweep.cc" />
+    <ClCompile Include="FBE_Math\poly2tri\sweep\sweep_context.cc" />
+    <ClCompile Include="FBE_Math\ReducedEval.cpp" />
+    <ClCompile Include="FBE_Math\symbolic.cpp" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{661944DD-71A1-4265-85FD-DBB6A1EB84B1}</ProjectGuid>
+    <RootNamespace>FBE_Math</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>IL_STD;_MBCS;EIGEN2_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>FBE_Utils\;.\eigen-eigen-5097c01bcdc4;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\;.\CPLEX_Studio124\cplex\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\concert\lib\x86_windows_vs2010\stat_mda;C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda</AdditionalLibraryDirectories>
+      <AdditionalDependencies>concert.lib;cplex124.lib;ilocplex.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>IL_STD;_MBCS;EIGEN2_SUPPORTEIGEN2_SUPPORT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>FBE_Utils\;.\eigen-eigen-5097c01bcdc4;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\;.\CPLEX_Studio124\cplex\include</AdditionalIncludeDirectories>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

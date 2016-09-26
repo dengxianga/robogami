@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{320D60BD-0E17-42C4-AC1C-DB87FED200CD}</ProjectGuid>
+    <RootNamespace>FBE_data</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\bullet\include;.\FBE_Descriptors;.\FBE_Math;C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\cplex\include\ilcplex;C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\concert\include\;C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\cplex\include;C:\Program Files (x86)\IBM\ILOG\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;./include;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib />
+    <Lib />
+    <Lib>
+      <AdditionalDependencies>concert.lib;cplex124.lib;ilocplex.lib;BulletCollision_vs2010_debug.lib;LinearMath_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>bullet\lib;.\CPLEX_Studio124\concert\lib\x86_windows_vs2010\stat_mdd;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mdd</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\bullet\include;.\FBE_Descriptors;.\FBE_Math;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\;.\CPLEX_Studio124\cplex\include;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;.\include;.\trimesh2;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FloatingPointExceptions>false</FloatingPointExceptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+    <Lib />
+    <Lib>
+      <AdditionalDependencies>concert.lib;cplex124.lib;ilocplex.lib;BulletCollision_vs2010.lib;LinearMath_vs2010.lib;BulletDynamics_vs2010.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>bullet\lib;.\CPLEX_Studio124\concert\lib\x86_windows_vs2010\stat_mda;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectReference Include="FBE_Math.vcxproj">
+      <Project>{661944dd-71a1-4265-85fd-dbb6a1eb84b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="trimesh2.vcxproj">
+      <Project>{75df1798-f43f-42b8-824c-4f32a612ae47}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Design\component.cpp" />
+    <ClCompile Include="FBE_Design\componentTypes.cpp" />
+    <ClCompile Include="FBE_Design\connectorsGroup.cpp" />
+    <ClCompile Include="FBE_Design\dataTraits.cpp" />
+    <ClCompile Include="FBE_Design\design.cpp" />
+    <ClCompile Include="FBE_Design\functionality.cpp" />
+    <ClCompile Include="FBE_Design\graph.cpp" />
+    <ClCompile Include="FBE_Design\parser.cpp" />
+    <ClCompile Include="FBE_Design\tree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Design\component.h" />
+    <ClInclude Include="FBE_Design\componentTypes.h" />
+    <ClInclude Include="FBE_Design\connectorsGroup.h" />
+    <ClInclude Include="FBE_Design\dataTraits.h" />
+    <ClInclude Include="FBE_Design\design.h" />
+    <ClInclude Include="FBE_Design\functionality.h" />
+    <ClInclude Include="FBE_Design\graph.h" />
+    <ClInclude Include="FBE_Design\params.h" />
+    <ClInclude Include="FBE_Design\parser.h" />
+    <ClInclude Include="FBE_Design\rapidxml.hpp" />
+    <ClInclude Include="FBE_Design\rapidxml_iterators.hpp" />
+    <ClInclude Include="FBE_Design\rapidxml_print.hpp" />
+    <ClInclude Include="FBE_Design\rapidxml_utils.hpp" />
+    <ClInclude Include="FBE_Design\tree.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

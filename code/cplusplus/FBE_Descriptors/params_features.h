@@ -1,0 +1,1 @@
+#define PCA_TRANS_NORM_FACTOR 47.082

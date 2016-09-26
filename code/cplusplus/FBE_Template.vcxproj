@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{55EDEE9A-19BA-4F1F-9096-93C89917428C}</ProjectGuid>
+    <RootNamespace>FBE_data</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>.\bullet\include;.\FBE_Utils;.\FBE_Temp;.\FBE_Kinematics;.\FBE_Math;.\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\ilconcert;.\CPLEX_Studio124\cplex\include;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;./include;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib />
+    <Lib />
+    <Lib>
+      <AdditionalDependencies>concert.lib;cplex124.lib;ilocplex.lib;BulletCollision_vs2010_debug.lib;LinearMath_vs2010_debug.lib;BulletDynamics_vs2010_debug.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>bullet\lib;.\CPLEX_Studio124\concert\lib\x86_windows_vs2010\stat_mdd;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mdd</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>.\bullet\include;.\FBE_Utils;.\FBE_Temp;.\FBE_Math;.\FBE_Kinematics;\CPLEX_Studio124\cplex\include\ilcplex;.\CPLEX_Studio124\concert\include\ilconcert;.\CPLEX_Studio124\cplex\include;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda;./include;.\eigen-eigen-5097c01bcdc4</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IL_STD;EIGEN2_SUPPORT;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <MinimalRebuild>false</MinimalRebuild>
+      <AssemblerOutput>NoListing</AssemblerOutput>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+    <Lib />
+    <Lib>
+      <AdditionalDependencies>concert.lib;cplex124.lib;ilocplex.lib;BulletCollision_vs2010.lib;LinearMath_vs2010.lib;BulletDynamics_vs2010.lib</AdditionalDependencies>
+    </Lib>
+    <Lib>
+      <AdditionalLibraryDirectories>bullet\lib;.\CPLEX_Studio124\concert\lib\x86_windows_vs2010\stat_mda;.\CPLEX_Studio124\cplex\lib\x86_windows_vs2010\stat_mda</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Kinematics\DrivingJointSelection.cpp" />
+    <ClCompile Include="FBE_Kinematics\ElectronicsGraph.cpp" />
+    <ClCompile Include="FBE_Kinematics\KinChain.cpp" />
+    <ClCompile Include="FBE_Temp\articulation.cpp" />
+    <ClCompile Include="FBE_Temp\constraints.cpp" />
+    <ClCompile Include="FBE_Temp\ConstraintsEval.cpp" />
+    <ClCompile Include="FBE_Temp\controller.cpp" />
+    <ClCompile Include="FBE_Temp\element_motion.cpp" />
+    <ClCompile Include="FBE_Temp\element_openscad.cpp" />
+    <ClCompile Include="FBE_Temp\element_symbolic.cpp" />
+    <ClCompile Include="FBE_Temp\FriendlyLinearSystem.cpp" />
+    <ClCompile Include="FBE_Temp\geometry.cpp" />
+    <ClCompile Include="FBE_Temp\NewConnection.cpp" />
+    <ClCompile Include="FBE_Temp\NewPatch.cpp" />
+    <ClCompile Include="FBE_Temp\template.cpp" />
+    <ClCompile Include="FBE_Temp\templateElement.cpp" />
+    <ClCompile Include="FBE_Temp\templateGroup.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Kinematics\DrivingJointSelection.h" />
+    <ClInclude Include="FBE_Kinematics\ElectronicsGraph.h" />
+    <ClInclude Include="FBE_Kinematics\KinChain.h" />
+    <ClInclude Include="FBE_Temp\articulation.h" />
+    <ClInclude Include="FBE_Temp\constraints.h" />
+    <ClInclude Include="FBE_Temp\constraintsEval.h" />
+    <ClInclude Include="FBE_Temp\contactPoint.h" />
+    <ClInclude Include="FBE_Temp\controller.h" />
+    <ClInclude Include="FBE_Temp\element.h" />
+    <ClInclude Include="FBE_Temp\element_motion.h" />
+    <ClInclude Include="FBE_Temp\element_openscad.h" />
+    <ClInclude Include="FBE_Temp\element_symbolic.h" />
+    <ClInclude Include="FBE_Temp\FriendlyLinearSystem.h" />
+    <ClInclude Include="FBE_Temp\geometry.h" />
+    <ClInclude Include="FBE_Temp\NewConnection.h" />
+    <ClInclude Include="FBE_Temp\NewPatch.h" />
+    <ClInclude Include="FBE_Temp\params.h" />
+    <ClInclude Include="FBE_Temp\semantics.h" />
+    <ClInclude Include="FBE_Temp\template.h" />
+    <ClInclude Include="FBE_Temp\templateElement.h" />
+    <ClInclude Include="FBE_Temp\templateGroup.h" />
+    <ClInclude Include="FBE_Temp\util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="FBE_Math.vcxproj">
+      <Project>{661944dd-71a1-4265-85fd-dbb6a1eb84b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Utils.vcxproj">
+      <Project>{1c256f00-96c0-41e9-865d-a6629dd6441f}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

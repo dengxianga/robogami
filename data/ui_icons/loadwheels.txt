@@ -1,0 +1,5 @@
+WheelBasic WheelBasic 0
+WheelBoots WheelBoots 0
+WheelHollow WheelHollow 0
+WheelRimless WheelRimless 0
+WheelSpoked WheelSpoked 0

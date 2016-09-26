@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="FBE_Proto\common.pb.cc" />
+    <ClCompile Include="FBE_Proto\design.pb.cc" />
+    <ClCompile Include="FBE_Proto\DesignProtoConverter.cpp" />
+    <ClCompile Include="FBE_Proto\openscad.pb.cc" />
+    <ClCompile Include="FBE_Proto\PartialConverters.cpp" />
+    <ClCompile Include="FBE_Proto\symbolic.pb.cc" />
+    <ClCompile Include="FBE_Proto\template.pb.cc" />
+    <ClCompile Include="FBE_Proto\TemplateProtoConverter.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FBE_Proto\common.pb.h" />
+    <ClInclude Include="FBE_Proto\design.pb.h" />
+    <ClInclude Include="FBE_Proto\DesignProtoConverter.h" />
+    <ClInclude Include="FBE_Proto\openscad.pb.h" />
+    <ClInclude Include="FBE_Proto\PartialConverters.h" />
+    <ClInclude Include="FBE_Proto\ProtoConverter.h" />
+    <ClInclude Include="FBE_Proto\symbolic.pb.h" />
+    <ClInclude Include="FBE_Proto\template.pb.h" />
+    <ClInclude Include="FBE_Proto\TemplateProtoConverter.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FBE_Proto\build_proto.bat" />
+    <None Include="FBE_Proto\common.proto" />
+    <None Include="FBE_Proto\design.proto" />
+    <None Include="FBE_Proto\openscad.proto" />
+    <None Include="FBE_Proto\symbolic.proto" />
+    <None Include="FBE_Proto\template.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="FBE_Math.vcxproj">
+      <Project>{661944dd-71a1-4265-85fd-dbb6a1eb84b1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="FBE_Template.vcxproj">
+      <Project>{55edee9a-19ba-4f1f-9096-93c89917428c}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{852F81B0-F3EE-48C4-A34D-DE6329D6F446}</ProjectGuid>
+    <RootNamespace>FBE_Proto</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v100</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonDebugProperties.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="CommonProperties.props" />
+    <Import Project="CommonReleaseProperties.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\protobuf\src;.\FBE_Manipulations;.\FBE_Utils;.\FBE_Math;.\eigen-eigen-5097c01bcdc4;.\include;.\FBE_Temp;.\FBE_Design;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\protobuf\src;.\FBE_Manipulations;.\FBE_Utils;.\FBE_Math;.\eigen-eigen-5097c01bcdc4;.\include;.\FBE_Temp;.\FBE_Design;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

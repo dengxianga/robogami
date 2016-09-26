@@ -1,0 +1,56 @@
+package FabByExample.proto;
+
+import "common.proto";
+
+message Design {
+	optional string name = 1;
+	optional Node root = 2;
+}
+
+message Transformation {
+	optional Matrix rotation_matrix = 1;
+	optional Vector translation_vector = 2;		
+}
+
+message Functionality{
+	optional int32 ID = 1;
+	optional Vector center = 2;
+	optional string name = 3;
+	enum Type{
+		ROT = 0;
+		TRANS = 1;
+		PROT = 2;
+	}
+	enum Axis{
+		NONE = 0;
+		X = 1;
+		Y = 2;
+		Z = 3;		
+	}
+	optional Type type = 4;
+	optional Axis axis = 5;
+
+}
+
+message Node {
+	optional string name = 1;
+	optional int32 id = 2;	
+	repeated Node children = 3;
+	optional Transformation transformation = 4;	
+	optional Functionality func = 5;
+
+	extensions 100 to max;
+}
+
+message LeafNode {
+	extend Node {
+		optional LeafNode leaf_node = 100;
+	}
+	enum Type {
+		PART = 1;
+		CONNECTOR = 2;
+	}
+	optional string geometry = 1;
+	optional Type type = 2 [default = PART];
+	
+}

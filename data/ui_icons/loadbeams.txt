@@ -1,0 +1,5 @@
+SingleBeam SingleBeam 0
+SingleBeamContactLess SingleBeamContactLess 0
+DoubleBeam DoubleBeam 0
+TripleBeam TripleBeam 0
+WheelBasic WheelBasic 0
