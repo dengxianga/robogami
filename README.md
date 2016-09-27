@@ -8,7 +8,7 @@
 
 ## SETUP INSTRUCTIONS (for Windows):
 
-### STEP 1: git
+### STEP 1: GIT
 - Clone the repository: https://github.com/mit-drl/robogami
 - Let XXX be the folder where you cloned the git repository
 
@@ -17,7 +17,7 @@
   https://www.dropbox.com/sh/e9x7wmjvdh6pcl0/AAC7MNYK521Q_MIdCg3MGSX3a?dl=0
 
 ### STEP 3:  CPLEX
-- Unzip the setup file CPLEX_Studio124.7z into XXX
+- Unzip the setup file CPLEX_Studio124.7z into XXX\code\cplusplus
 - Add CPLEX to the path:
   
   Create these two Environment Variables:
