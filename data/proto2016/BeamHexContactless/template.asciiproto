@@ -1,0 +1,3815 @@
+template {
+  id: 0
+  name: "BeamHexContactless"
+  parameter {
+    id: 0
+    name: "0:.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 1
+    name: "0:.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 2
+    name: "0:.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 3
+    name: "0:.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 4
+    name: "0:.globalz_3d"
+    default: 0
+  }
+  parameter {
+    id: 5
+    name: "0:.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 6
+    name: "0:.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 7
+    name: "0:BeamHexContactless.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 8
+    name: "0:BeamHexContactless.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 9
+    name: "0:BeamHexContactless.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 10
+    name: "0:BeamHexContactless.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 11
+    name: "0:BeamHexContactless.beamlength.stitch"
+    default: 35
+  }
+  parameter {
+    id: 12
+    name: "0:BeamHexContactless.globalx_3d.stitch"
+    default: 0
+  }
+  parameter {
+    id: 13
+    name: "0:BeamHexContactless.globalx_2d.stitch"
+    default: 0
+  }
+  parameter {
+    id: 14
+    name: "0:BeamHexContactless.globaly_2d.stitch"
+    default: 0
+  }
+  parameter {
+    id: 15
+    name: "0:BeamHexContactless.globaly_3d.stitch"
+    default: 0
+  }
+  parameter {
+    id: 16
+    name: "0:BeamHexContactless.globalz_3d.stitch"
+    default: 0
+  }
+  parameter {
+    id: 17
+    name: "0:BeamHexContactless.beamside1.stitch"
+    default: 10
+  }
+  parameter {
+    id: 18
+    name: "0:BeamHexContactless.beamside3.stitch"
+    default: 10
+  }
+  parameter {
+    id: 19
+    name: "0:BeamHexContactless.beamside2.stitch"
+    default: 10
+  }
+  mapping_function {
+    composition {
+      template_id: 1
+      template_id: 2
+      template_id: 3
+      template_id: 4
+      template_id: 5
+      template_id: 6
+    }
+  }
+  feasible_set {
+    constraint_list {
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 7
+            coeff: -1
+            const: 10
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 7
+            coeff: 1
+            const: -60
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 8
+            coeff: -1
+            const: 5
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 8
+            coeff: 1
+            const: -30
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 9
+            coeff: -1
+            const: 5
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 9
+            coeff: 1
+            const: -30
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 10
+            coeff: -1
+            const: 5
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 10
+            coeff: 1
+            const: -30
+          }
+          type: LESS_THAN_ZERO
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 59
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 7
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 3
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 41
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 68
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 23
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 32
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 50
+            parameter_id: 11
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 33
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 51
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 42
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 0
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 24
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 60
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 69
+            parameter_id: 12
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 28
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 36
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 45
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 63
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 20
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 54
+            parameter_id: 13
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 22
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 58
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 40
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 67
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 31
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 49
+            parameter_id: 14
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 25
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 61
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 2
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 43
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 70
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 34
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 52
+            parameter_id: 15
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 4
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 53
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 44
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 35
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 62
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 71
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 26
+            parameter_id: 16
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 8
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 56
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 29
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 47
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 1
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 65
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 21
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 38
+            parameter_id: 17
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 10
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 55
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 46
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 6
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 64
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 27
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 37
+            parameter_id: 18
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 57
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 9
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 48
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 30
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 5
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 66
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      constraint {
+        linear_constraint {
+          expr {
+            parameter_id: 39
+            parameter_id: 19
+            coeff: 1
+            coeff: -1
+            const: 0
+          }
+          type: EQUALITY
+          constraintSemantics: GENERAL
+        }
+      }
+      inherited_template_id: 1
+      inherited_template_id: 2
+      inherited_template_id: 3
+      inherited_template_id: 4
+      inherited_template_id: 5
+      inherited_template_id: 6
+    }
+  }
+  child_template_id: 1
+  child_template_id: 2
+  child_template_id: 3
+  child_template_id: 4
+  child_template_id: 5
+  child_template_id: 6
+  connection {
+    parentPatchRef: 9
+    patchRef: 1
+    connectionMode {
+      foldConnection {
+        angle: 60
+      }
+    }
+  }
+  connection {
+    parentPatchRef: 15
+    patchRef: 7
+    connectionMode {
+      foldConnection {
+        angle: 60
+      }
+    }
+  }
+  connection {
+    parentPatchRef: 21
+    patchRef: 13
+    connectionMode {
+      foldConnection {
+        angle: 60
+      }
+    }
+  }
+  connection {
+    parentPatchRef: 27
+    patchRef: 19
+    connectionMode {
+      foldConnection {
+        angle: 60
+      }
+    }
+  }
+  connection {
+    parentPatchRef: 31
+    patchRef: 3
+    connectionMode {
+      bendConnection {
+        angle: 60
+      }
+    }
+  }
+  connection {
+    parentPatchRef: 33
+    patchRef: 25
+    connectionMode {
+      foldConnection {
+        angle: 60
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: LEG
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 1
+        coeff: 1
+        coeff: 1
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        coeff: -1
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        coeff: 1
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        coeff: -1
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 1
+        parameter_id: 5
+        coeff: 1
+        coeff: 1
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 1
+        coeff: 1
+        coeff: 1
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        coeff: -1
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        parameter_id: 1
+        parameter_id: 5
+        coeff: 1
+        coeff: -0.5
+        coeff: 1
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 1
+        parameter_id: 5
+        coeff: 1
+        coeff: 1
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        parameter_id: 5
+        coeff: 1
+        coeff: -0.5
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        parameter_id: 1
+        parameter_id: 5
+        coeff: 1
+        coeff: -0.5
+        coeff: 1
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        coeff: 1
+        coeff: -0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        coeff: -1
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        parameter_id: 5
+        coeff: 1
+        coeff: -0.5
+        coeff: 0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        parameter_id: 5
+        coeff: -1
+        coeff: 0.866025
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        coeff: 1
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        coeff: -1
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  contactInfo {
+    point {
+      x {
+        parameter_id: 0
+        parameter_id: 6
+        coeff: 1
+        coeff: -0.5
+        const: -5
+      }
+      y {
+        parameter_id: 2
+        parameter_id: 3
+        coeff: -1
+        coeff: -1
+        const: 35
+      }
+      z {
+        parameter_id: 4
+        parameter_id: 6
+        coeff: -1
+        coeff: 0.866025
+        const: -8.66025
+      }
+    }
+    hasBeenConstraint: false
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 1
+  name: "r0"
+  parameter {
+    id: 20
+    name: "1:r0.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 21
+    name: "1:r0.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 22
+    name: "1:r0.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 23
+    name: "1:r0.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 24
+    name: "1:r0.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 25
+    name: "1:r0.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 26
+    name: "1:r0.globalz_3d"
+    default: 0
+  }
+  parameter {
+    id: 27
+    name: "1:r0.beamside3"
+    default: 10
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 24
+              parameter_id: 21
+              coeff: 1
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 25
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 26
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 24
+              parameter_id: 21
+              coeff: 1
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 25
+              parameter_id: 23
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 26
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 24
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 25
+              parameter_id: 23
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 26
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 24
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 25
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 26
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r0"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 20
+              parameter_id: 21
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 22
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 20
+              parameter_id: 21
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 22
+              parameter_id: 23
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 20
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 22
+              parameter_id: 23
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 20
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 22
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 0
+          name: "r0.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 1
+          name: "r0.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 2
+          name: "r0.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 3
+          name: "r0.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r0"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 0
+    edge2SPatch {
+      edgeId: 0
+    }
+  }
+  patch {
+    id: 1
+    edge2SPatch {
+      edgeId: 1
+    }
+  }
+  patch {
+    id: 2
+    edge2SPatch {
+      edgeId: 2
+    }
+  }
+  patch {
+    id: 3
+    edge2SPatch {
+      edgeId: 3
+    }
+  }
+  patch {
+    id: 4
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 24
+          parameter_id: 21
+          coeff: 1
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 25
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 26
+          coeff: -1
+          const: -8.66025
+        }
+      }
+      normal: 0
+      normal: -1.2246467991473532e-016
+      normal: -1
+      separation {
+        parameter_id: 23
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 5
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 24
+          parameter_id: 27
+          coeff: 1
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 25
+          parameter_id: 23
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 26
+          coeff: -1
+          const: -8.66025
+        }
+      }
+      normal: 0
+      normal: -1.2246467991473532e-016
+      normal: -1
+      separation {
+        parameter_id: 23
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 2
+  name: "r1"
+  parameter {
+    id: 28
+    name: "2:r1.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 29
+    name: "2:r1.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 30
+    name: "2:r1.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 31
+    name: "2:r1.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 32
+    name: "2:r1.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 33
+    name: "2:r1.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 34
+    name: "2:r1.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 35
+    name: "2:r1.globalz_3d"
+    default: 0
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 33
+              parameter_id: 29
+              parameter_id: 30
+              coeff: 1
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 34
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 35
+              parameter_id: 30
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 33
+              parameter_id: 29
+              parameter_id: 30
+              coeff: 1
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 34
+              parameter_id: 32
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 35
+              parameter_id: 30
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 33
+              parameter_id: 29
+              coeff: 1
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 34
+              parameter_id: 32
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 35
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 33
+              parameter_id: 29
+              coeff: 1
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 34
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 35
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r1"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 28
+              parameter_id: 29
+              parameter_id: 30
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 31
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 28
+              parameter_id: 29
+              parameter_id: 30
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 31
+              parameter_id: 32
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 28
+              parameter_id: 29
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 31
+              parameter_id: 32
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 28
+              parameter_id: 29
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 31
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 4
+          name: "r1.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 5
+          name: "r1.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 6
+          name: "r1.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 7
+          name: "r1.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r1"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 6
+    edge2SPatch {
+      edgeId: 4
+    }
+  }
+  patch {
+    id: 7
+    edge2SPatch {
+      edgeId: 5
+    }
+  }
+  patch {
+    id: 8
+    edge2SPatch {
+      edgeId: 6
+    }
+  }
+  patch {
+    id: 9
+    edge2SPatch {
+      edgeId: 7
+    }
+  }
+  patch {
+    id: 10
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 33
+          parameter_id: 29
+          parameter_id: 30
+          coeff: 1
+          coeff: 1
+          coeff: 0.25
+          const: -5
+        }
+        y {
+          parameter_id: 34
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 35
+          parameter_id: 30
+          coeff: -1
+          coeff: 0.433013
+          const: -8.66025
+        }
+      }
+      normal: 0.866025403784
+      normal: -6.123233995736766e-017
+      normal: -0.5
+      separation {
+        parameter_id: 32
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 11
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 33
+          parameter_id: 29
+          parameter_id: 30
+          coeff: 1
+          coeff: 1
+          coeff: 0.25
+          const: -5
+        }
+        y {
+          parameter_id: 34
+          parameter_id: 32
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 35
+          parameter_id: 30
+          coeff: -1
+          coeff: 0.433013
+          const: -8.66025
+        }
+      }
+      normal: 0.866025403784
+      normal: -6.123233995736766e-017
+      normal: -0.5
+      separation {
+        parameter_id: 32
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 3
+  name: "r2"
+  parameter {
+    id: 36
+    name: "3:r2.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 37
+    name: "3:r2.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 38
+    name: "3:r2.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 39
+    name: "3:r2.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 40
+    name: "3:r2.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 41
+    name: "3:r2.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 42
+    name: "3:r2.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 43
+    name: "3:r2.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 44
+    name: "3:r2.globalz_3d"
+    default: 0
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 42
+              parameter_id: 37
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: -0.5
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 43
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 44
+              parameter_id: 37
+              parameter_id: 39
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 42
+              parameter_id: 37
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: -0.5
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 43
+              parameter_id: 41
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 44
+              parameter_id: 37
+              parameter_id: 39
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 42
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 43
+              parameter_id: 41
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 44
+              parameter_id: 39
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 42
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 43
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 44
+              parameter_id: 39
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r2"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 36
+              parameter_id: 37
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 40
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 36
+              parameter_id: 37
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 40
+              parameter_id: 41
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 36
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 40
+              parameter_id: 41
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 36
+              parameter_id: 38
+              parameter_id: 39
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 40
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 8
+          name: "r2.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 9
+          name: "r2.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 10
+          name: "r2.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 11
+          name: "r2.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r2"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 12
+    edge2SPatch {
+      edgeId: 8
+    }
+  }
+  patch {
+    id: 13
+    edge2SPatch {
+      edgeId: 9
+    }
+  }
+  patch {
+    id: 14
+    edge2SPatch {
+      edgeId: 10
+    }
+  }
+  patch {
+    id: 15
+    edge2SPatch {
+      edgeId: 11
+    }
+  }
+  patch {
+    id: 16
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 42
+          parameter_id: 37
+          parameter_id: 38
+          parameter_id: 39
+          coeff: 1
+          coeff: -0.25
+          coeff: 1
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 43
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 44
+          parameter_id: 37
+          parameter_id: 39
+          coeff: -1
+          coeff: 0.433013
+          coeff: 0.866025
+          const: -8.66025
+        }
+      }
+      normal: 0.866025403784
+      normal: 6.123233995736766e-017
+      normal: 0.5
+      separation {
+        parameter_id: 41
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 17
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 42
+          parameter_id: 38
+          parameter_id: 39
+          coeff: 1
+          coeff: 0.75
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 43
+          parameter_id: 41
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 44
+          parameter_id: 38
+          parameter_id: 39
+          coeff: -1
+          coeff: 0.433013
+          coeff: 0.866025
+          const: -8.66025
+        }
+      }
+      normal: 0.866025403784
+      normal: 6.123233995736766e-017
+      normal: 0.5
+      separation {
+        parameter_id: 41
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 4
+  name: "r3"
+  parameter {
+    id: 45
+    name: "4:r3.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 46
+    name: "4:r3.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 47
+    name: "4:r3.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 48
+    name: "4:r3.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 49
+    name: "4:r3.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 50
+    name: "4:r3.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 51
+    name: "4:r3.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 52
+    name: "4:r3.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 53
+    name: "4:r3.globalz_3d"
+    default: 0
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 51
+              parameter_id: 46
+              parameter_id: 48
+              coeff: 1
+              coeff: -0.5
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 52
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 53
+              parameter_id: 46
+              parameter_id: 48
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 51
+              parameter_id: 46
+              parameter_id: 48
+              coeff: 1
+              coeff: -0.5
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 52
+              parameter_id: 50
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 53
+              parameter_id: 46
+              parameter_id: 48
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 51
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: -0.5
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 52
+              parameter_id: 50
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 53
+              parameter_id: 46
+              parameter_id: 48
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 51
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: -0.5
+              coeff: 1
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 52
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 53
+              parameter_id: 46
+              parameter_id: 48
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r3"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 45
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 49
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 45
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 49
+              parameter_id: 50
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 45
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 49
+              parameter_id: 50
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 45
+              parameter_id: 46
+              parameter_id: 47
+              parameter_id: 48
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 49
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 12
+          name: "r3.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 13
+          name: "r3.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 14
+          name: "r3.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 15
+          name: "r3.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r3"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 18
+    edge2SPatch {
+      edgeId: 12
+    }
+  }
+  patch {
+    id: 19
+    edge2SPatch {
+      edgeId: 13
+    }
+  }
+  patch {
+    id: 20
+    edge2SPatch {
+      edgeId: 14
+    }
+  }
+  patch {
+    id: 21
+    edge2SPatch {
+      edgeId: 15
+    }
+  }
+  patch {
+    id: 22
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 51
+          parameter_id: 46
+          parameter_id: 47
+          parameter_id: 48
+          coeff: 1
+          coeff: -0.5
+          coeff: 0.5
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 52
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 53
+          parameter_id: 46
+          parameter_id: 48
+          coeff: -1
+          coeff: 0.866025
+          coeff: 0.866025
+          const: -8.66025
+        }
+      }
+      normal: 3.88578058619e-016
+      normal: 1.2246467991473532e-016
+      normal: 1
+      separation {
+        parameter_id: 50
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 23
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 51
+          parameter_id: 46
+          parameter_id: 47
+          parameter_id: 48
+          coeff: 1
+          coeff: -1
+          coeff: 1
+          coeff: 0.5
+          const: -5
+        }
+        y {
+          parameter_id: 52
+          parameter_id: 50
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 53
+          parameter_id: 46
+          parameter_id: 48
+          coeff: -1
+          coeff: 0.866025
+          coeff: 0.866025
+          const: -8.66025
+        }
+      }
+      normal: 3.88578058619e-016
+      normal: 1.2246467991473532e-016
+      normal: 1
+      separation {
+        parameter_id: 50
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 5
+  name: "r4"
+  parameter {
+    id: 54
+    name: "5:r4.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 55
+    name: "5:r4.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 56
+    name: "5:r4.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 57
+    name: "5:r4.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 58
+    name: "5:r4.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 59
+    name: "5:r4.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 60
+    name: "5:r4.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 61
+    name: "5:r4.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 62
+    name: "5:r4.globalz_3d"
+    default: 0
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 60
+              parameter_id: 55
+              coeff: 1
+              coeff: -0.5
+              const: -5
+            }
+            y {
+              parameter_id: 61
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 62
+              parameter_id: 55
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 60
+              parameter_id: 55
+              coeff: 1
+              coeff: -0.5
+              const: -5
+            }
+            y {
+              parameter_id: 61
+              parameter_id: 59
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 62
+              parameter_id: 55
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 60
+              parameter_id: 55
+              parameter_id: 57
+              coeff: 1
+              coeff: -0.5
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 61
+              parameter_id: 59
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 62
+              parameter_id: 55
+              parameter_id: 57
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 60
+              parameter_id: 55
+              parameter_id: 57
+              coeff: 1
+              coeff: -0.5
+              coeff: 0.5
+              const: -5
+            }
+            y {
+              parameter_id: 61
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 62
+              parameter_id: 55
+              parameter_id: 57
+              coeff: -1
+              coeff: 0.866025
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r4"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 54
+              parameter_id: 55
+              parameter_id: 56
+              parameter_id: 57
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 58
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 54
+              parameter_id: 55
+              parameter_id: 56
+              parameter_id: 57
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 58
+              parameter_id: 59
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 54
+              parameter_id: 55
+              parameter_id: 56
+              parameter_id: 57
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 58
+              parameter_id: 59
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 54
+              parameter_id: 55
+              parameter_id: 56
+              parameter_id: 57
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 1
+              const: 0
+            }
+            y {
+              parameter_id: 58
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 16
+          name: "r4.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 17
+          name: "r4.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 18
+          name: "r4.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 19
+          name: "r4.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r4"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 24
+    edge2SPatch {
+      edgeId: 16
+    }
+  }
+  patch {
+    id: 25
+    edge2SPatch {
+      edgeId: 17
+    }
+  }
+  patch {
+    id: 26
+    edge2SPatch {
+      edgeId: 18
+    }
+  }
+  patch {
+    id: 27
+    edge2SPatch {
+      edgeId: 19
+    }
+  }
+  patch {
+    id: 28
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 60
+          parameter_id: 55
+          parameter_id: 57
+          coeff: 1
+          coeff: -0.5
+          coeff: 0.25
+          const: -5
+        }
+        y {
+          parameter_id: 61
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 62
+          parameter_id: 55
+          parameter_id: 57
+          coeff: -1
+          coeff: 0.866025
+          coeff: 0.433013
+          const: -8.66025
+        }
+      }
+      normal: -0.866025403784
+      normal: 6.123233995736766e-017
+      normal: 0.5
+      separation {
+        parameter_id: 59
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 29
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 60
+          parameter_id: 55
+          parameter_id: 57
+          coeff: 1
+          coeff: -0.5
+          coeff: 0.25
+          const: -5
+        }
+        y {
+          parameter_id: 61
+          parameter_id: 59
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 62
+          parameter_id: 55
+          parameter_id: 57
+          coeff: -1
+          coeff: 0.866025
+          coeff: 0.433013
+          const: -8.66025
+        }
+      }
+      normal: -0.866025403784
+      normal: 6.123233995736766e-017
+      normal: 0.5
+      separation {
+        parameter_id: 59
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+template {
+  id: 6
+  name: "r5"
+  parameter {
+    id: 63
+    name: "6:r5.globalx_2d"
+    default: 0
+  }
+  parameter {
+    id: 64
+    name: "6:r5.beamside3"
+    default: 10
+  }
+  parameter {
+    id: 65
+    name: "6:r5.beamside1"
+    default: 10
+  }
+  parameter {
+    id: 66
+    name: "6:r5.beamside2"
+    default: 10
+  }
+  parameter {
+    id: 67
+    name: "6:r5.globaly_2d"
+    default: 0
+  }
+  parameter {
+    id: 68
+    name: "6:r5.beamlength"
+    default: 35
+  }
+  parameter {
+    id: 69
+    name: "6:r5.globalx_3d"
+    default: 0
+  }
+  parameter {
+    id: 70
+    name: "6:r5.globaly_3d"
+    default: 0
+  }
+  parameter {
+    id: 71
+    name: "6:r5.globalz_3d"
+    default: 0
+  }
+  mapping_function {
+    linear_3 {
+      mesh {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 69
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 70
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 71
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 69
+              coeff: 1
+              const: -5
+            }
+            y {
+              parameter_id: 70
+              parameter_id: 68
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 71
+              coeff: -1
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 69
+              parameter_id: 64
+              coeff: 1
+              coeff: -0.5
+              const: -5
+            }
+            y {
+              parameter_id: 70
+              parameter_id: 68
+              coeff: -1
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 71
+              parameter_id: 64
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 69
+              parameter_id: 64
+              coeff: 1
+              coeff: -0.5
+              const: -5
+            }
+            y {
+              parameter_id: 70
+              coeff: -1
+              const: 35
+            }
+            z {
+              parameter_id: 71
+              parameter_id: 64
+              coeff: -1
+              coeff: 0.866025
+              const: -8.66025
+            }
+          }
+        }
+        face {
+          id: 0
+          name: "r5"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+    linear_2 {
+      drawing {
+        vertex {
+          id: 0
+          point {
+            x {
+              parameter_id: 63
+              parameter_id: 64
+              parameter_id: 65
+              parameter_id: 66
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 67
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 1
+          point {
+            x {
+              parameter_id: 63
+              parameter_id: 64
+              parameter_id: 65
+              parameter_id: 66
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 67
+              parameter_id: 68
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 2
+          point {
+            x {
+              parameter_id: 63
+              parameter_id: 64
+              parameter_id: 65
+              parameter_id: 66
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 67
+              parameter_id: 68
+              coeff: 1
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        vertex {
+          id: 3
+          point {
+            x {
+              parameter_id: 63
+              parameter_id: 64
+              parameter_id: 65
+              parameter_id: 66
+              coeff: 1
+              coeff: 1
+              coeff: 2
+              coeff: 2
+              const: 0
+            }
+            y {
+              parameter_id: 67
+              coeff: 1
+              const: 0
+            }
+          }
+        }
+        edge {
+          id: 20
+          name: "r5.0"
+          vertex1_id: 3
+          vertex2_id: 0
+        }
+        edge {
+          id: 21
+          name: "r5.1"
+          vertex1_id: 0
+          vertex2_id: 1
+        }
+        edge {
+          id: 22
+          name: "r5.2"
+          vertex1_id: 1
+          vertex2_id: 2
+        }
+        edge {
+          id: 23
+          name: "r5.3"
+          vertex1_id: 2
+          vertex2_id: 3
+        }
+        face {
+          id: 0
+          name: "r5"
+          vertex_id: 0
+          vertex_id: 1
+          vertex_id: 2
+          vertex_id: 3
+        }
+      }
+    }
+  }
+  feasible_set {
+    constraint_list {
+    }
+  }
+  patch {
+    id: 30
+    edge2SPatch {
+      edgeId: 20
+    }
+  }
+  patch {
+    id: 31
+    edge2SPatch {
+      edgeId: 21
+    }
+  }
+  patch {
+    id: 32
+    edge2SPatch {
+      edgeId: 22
+    }
+  }
+  patch {
+    id: 33
+    edge2SPatch {
+      edgeId: 23
+    }
+  }
+  patch {
+    id: 34
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 69
+          parameter_id: 64
+          coeff: 1
+          coeff: -0.25
+          const: -5
+        }
+        y {
+          parameter_id: 70
+          coeff: -1
+          const: 25
+        }
+        z {
+          parameter_id: 71
+          parameter_id: 64
+          coeff: -1
+          coeff: 0.433013
+          const: -8.66025
+        }
+      }
+      normal: -0.866025403784
+      normal: -6.123233995736766e-017
+      normal: -0.5
+      separation {
+        parameter_id: 68
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  patch {
+    id: 35
+    servoPointPatch {
+      center {
+        x {
+          parameter_id: 69
+          parameter_id: 64
+          parameter_id: 65
+          coeff: 1
+          coeff: -0.5
+          coeff: 0.25
+          const: -5
+        }
+        y {
+          parameter_id: 70
+          parameter_id: 68
+          coeff: -1
+          coeff: -1
+          const: 45
+        }
+        z {
+          parameter_id: 71
+          parameter_id: 64
+          parameter_id: 65
+          coeff: -1
+          coeff: 0.866025
+          coeff: -0.433013
+          const: -8.66025
+        }
+      }
+      normal: -0.866025403784
+      normal: -6.123233995736766e-017
+      normal: -0.5
+      separation {
+        parameter_id: 68
+        coeff: 1
+        const: 0
+      }
+    }
+  }
+  independent: false
+  semantics {
+    printMethod: PRINT_AND_FOLD
+    partType: GENERAL
+  }
+  symmetryChoices {
+    symm_ground: false
+    symm_legW: false
+    symm_legL: false
+    symm_spacing: false
+  }
+}
+root_template_id: 0

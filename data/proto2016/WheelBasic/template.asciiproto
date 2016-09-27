@@ -1,0 +1,1049 @@
+  template {
+    id: 0
+    name: "WheelBasic"
+    parameter {
+      id: 6
+      name: ".globalx_3d"
+      default: 0.0
+    }
+    parameter {
+      id: 7
+      name: ".diameter"
+      default: 35
+    }
+    parameter {
+      id: 8
+      name: ".globaly_3d"
+      default: 0.0
+    }
+    parameter {
+      id: 9
+      name: ".globalz_3d"
+      default: 0.0
+    }
+    parameter {
+      id: 10
+      name: "WheelBasic.diameter"
+      default: 35
+    }
+    parameter {
+      id: 11
+      name: "WheelBasic.diameter.stitch"
+      default: 35
+    }
+    parameter {
+      id: 12
+      name: "WheelBasic.globalz_3d.stitch"
+      default: 0.0
+    }
+    parameter {
+      id: 13
+      name: "WheelBasic.globalx_3d.stitch"
+      default: 0.0
+    }
+    parameter {
+      id: 14
+      name: "WheelBasic.globalx_2d.stitch"
+      default: 0.0
+    }
+    parameter {
+      id: 15
+      name: "WheelBasic.globaly_2d.stitch"
+      default: 0.0
+    }
+    parameter {
+      id: 16
+      name: "WheelBasic.globaly_3d.stitch"
+      default: 0.0
+    }
+    mapping_function {
+      composition {
+        template_id: 1
+      }
+    }
+    feasible_set {
+      constraint_list {
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 10
+              coeff: -1.0
+              const: 5.0
+            }
+            type: LESS_THAN_ZERO
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 10
+              coeff: 1.0
+              const: -100.0
+            }
+            type: LESS_THAN_ZERO
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 7
+              parameter_id: 11
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 1
+              parameter_id: 11
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 10
+              parameter_id: 11
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 9
+              parameter_id: 12
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 5
+              parameter_id: 12
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 3
+              parameter_id: 13
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 6
+              parameter_id: 13
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 0
+              parameter_id: 14
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 2
+              parameter_id: 15
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 4
+              parameter_id: 16
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+        constraint {
+          linear_constraint {
+            expr {
+              parameter_id: 8
+              parameter_id: 16
+              coeff: 1.0
+              coeff: -1.0
+            }
+            type: EQUALITY
+          }
+        }
+      }
+    }
+    child_template_id: 1
+    semantics {
+      partType: LEG
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 1.0
+      }
+      y {
+        parameter_id: 8
+        coeff: 1.0
+        const: 0.0
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.809016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.587785252292
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.309016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.951056516295
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.309016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.951056516295
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.809016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.587785252292
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -1.0
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -3.21624529935e-16
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.809016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.587785252292
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.309016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.951056516295
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.309016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.951056516295
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+    contactPoints {
+      x {
+        parameter_id: 6
+        parameter_id: 7
+        coeff: 1.0
+        coeff: 0.809016994375
+      }
+      y {
+        parameter_id: 8
+        parameter_id: 7
+        coeff: 1.0
+        coeff: -0.587785252292
+      }
+      z {
+        parameter_id: 9
+        coeff: 1.0
+        const: 0.0
+      }
+    }
+  }
+  template {
+    id: 1
+    name: "r0"
+    parameter {
+      id: 0
+      name: "r0.globalx_2d"
+      default: 0.0
+    }
+    parameter {
+      id: 1
+      name: "r0.diameter"
+      default: 35
+    }
+    parameter {
+      id: 2
+      name: "r0.globaly_2d"
+      default: 0.0
+    }
+    parameter {
+      id: 3
+      name: "r0.globalx_3d"
+      default: 0.0
+    }
+    parameter {
+      id: 4
+      name: "r0.globaly_3d"
+      default: 0.0
+    }
+    parameter {
+      id: 5
+      name: "r0.globalz_3d"
+      default: 0.0
+    }
+    mapping_function {
+      linear_3 {
+        mesh {
+          vertex {
+            id: 0
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 1.0
+              }
+              y {
+                parameter_id: 4
+                coeff: 1.0
+                const: 0.0
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 1
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.809016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.587785252292
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 2
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.309016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.951056516295
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 3
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.309016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.951056516295
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 4
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.809016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.587785252292
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 5
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -1.0
+              }
+              y {
+                parameter_id: 4
+                coeff: 1.0
+                const: 0.0
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 6
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.809016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.587785252292
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 7
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.309016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.951056516295
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 8
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.309016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.951056516295
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 9
+            point {
+              x {
+                parameter_id: 3
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.809016994375
+              }
+              y {
+                parameter_id: 4
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.587785252292
+              }
+              z {
+                parameter_id: 5
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          face {
+            id: 0
+            name: "r0"
+            vertex_id: 0
+            vertex_id: 1
+            vertex_id: 2
+            vertex_id: 3
+            vertex_id: 4
+            vertex_id: 5
+            vertex_id: 6
+            vertex_id: 7
+            vertex_id: 8
+            vertex_id: 9
+          }
+        }
+      }
+      linear_2 {
+        drawing {
+          vertex {
+            id: 0
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 1.0
+              }
+              y {
+                parameter_id: 2
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 1
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.809016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.587785252292
+              }
+            }
+          }
+          vertex {
+            id: 2
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.309016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.951056516295
+              }
+            }
+          }
+          vertex {
+            id: 3
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.309016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.951056516295
+              }
+            }
+          }
+          vertex {
+            id: 4
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.809016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.587785252292
+              }
+            }
+          }
+          vertex {
+            id: 5
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -1.0
+              }
+              y {
+                parameter_id: 2
+                coeff: 1.0
+                const: 0.0
+              }
+            }
+          }
+          vertex {
+            id: 6
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.809016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.587785252292
+              }
+            }
+          }
+          vertex {
+            id: 7
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.309016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.951056516295
+              }
+            }
+          }
+          vertex {
+            id: 8
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.309016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.951056516295
+              }
+            }
+          }
+          vertex {
+            id: 9
+            point {
+              x {
+                parameter_id: 0
+                parameter_id: 1
+                coeff: 1.0
+                coeff: 0.809016994375
+              }
+              y {
+                parameter_id: 2
+                parameter_id: 1
+                coeff: 1.0
+                coeff: -0.587785252292
+              }
+            }
+          }
+          edge {
+            id: 0
+            name: "r0.0"
+            vertex1_id: 9
+            vertex2_id: 0
+          }
+          edge {
+            id: 1
+            name: "r0.1"
+            vertex1_id: 0
+            vertex2_id: 1
+          }
+          edge {
+            id: 2
+            name: "r0.2"
+            vertex1_id: 1
+            vertex2_id: 2
+          }
+          edge {
+            id: 3
+            name: "r0.3"
+            vertex1_id: 2
+            vertex2_id: 3
+          }
+          edge {
+            id: 4
+            name: "r0.4"
+            vertex1_id: 3
+            vertex2_id: 4
+          }
+          edge {
+            id: 5
+            name: "r0.5"
+            vertex1_id: 4
+            vertex2_id: 5
+          }
+          edge {
+            id: 6
+            name: "r0.6"
+            vertex1_id: 5
+            vertex2_id: 6
+          }
+          edge {
+            id: 7
+            name: "r0.7"
+            vertex1_id: 6
+            vertex2_id: 7
+          }
+          edge {
+            id: 8
+            name: "r0.8"
+            vertex1_id: 7
+            vertex2_id: 8
+          }
+          edge {
+            id: 9
+            name: "r0.9"
+            vertex1_id: 8
+            vertex2_id: 9
+          }
+          face {
+            id: 0
+            name: "r0"
+            vertex_id: 0
+            vertex_id: 1
+            vertex_id: 2
+            vertex_id: 3
+            vertex_id: 4
+            vertex_id: 5
+            vertex_id: 6
+            vertex_id: 7
+            vertex_id: 8
+            vertex_id: 9
+            edge_id: 0
+            edge_id: 1
+            edge_id: 2
+            edge_id: 3
+            edge_id: 4
+            edge_id: 5
+            edge_id: 6
+            edge_id: 7
+            edge_id: 8
+            edge_id: 9
+          }
+        }
+      }
+    }
+    patch {
+      id: 0
+      edge2SPatch {
+        edgeId: 0
+      }
+    }
+    patch {
+      id: 1
+      edge2SPatch {
+        edgeId: 1
+      }
+    }
+    patch {
+      id: 2
+      edge2SPatch {
+        edgeId: 2
+      }
+    }
+    patch {
+      id: 3
+      edge2SPatch {
+        edgeId: 3
+      }
+    }
+    patch {
+      id: 4
+      edge2SPatch {
+        edgeId: 4
+      }
+    }
+    patch {
+      id: 5
+      edge2SPatch {
+        edgeId: 5
+      }
+    }
+    patch {
+      id: 6
+      edge2SPatch {
+        edgeId: 6
+      }
+    }
+    patch {
+      id: 7
+      edge2SPatch {
+        edgeId: 7
+      }
+    }
+    patch {
+      id: 8
+      edge2SPatch {
+        edgeId: 8
+      }
+    }
+    patch {
+      id: 9
+      edge2SPatch {
+        edgeId: 9
+      }
+    }
+    patch {
+      id: -1
+      servoPointPatch {
+        center {
+          x {
+            parameter_id: 3
+            coeff: 1.0
+            const: 0.0
+          }
+          y {
+            parameter_id: 4
+            coeff: 1.0
+            const: 0.0
+          }
+          z {
+            parameter_id: 5
+            coeff: 1.0
+            const: 0.0
+          }
+        }
+        normal: 0.0
+        normal: 0.0
+        normal: 1.0
+        separation {
+          parameter_id: 1
+          coeff: 0.5
+        }
+      }
+    }
+    patch {
+      id: -2
+      servoPointPatch {
+        center {
+          x {
+            parameter_id: 3
+            coeff: 1.0
+            const: 0.0
+          }
+          y {
+            parameter_id: 4
+            coeff: 1.0
+            const: 0.0
+          }
+          z {
+            parameter_id: 5
+            coeff: 1.0
+            const: 0.0
+          }
+        }
+        normal: 0.0
+        normal: 0.0
+        normal: -1.0
+        separation {
+          parameter_id: 1
+          coeff: 0.5
+        }
+      }
+    }
+  }
+  root_template_id: 0

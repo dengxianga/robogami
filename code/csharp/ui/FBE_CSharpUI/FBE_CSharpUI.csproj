@@ -398,6 +398,9 @@
     <Resource Include="Resources\3d.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>$(windir)\System32\xcopy.exe /d /y "$(SolutionDir)nlopt-2.4.2\nlopt-2.4.2-dll32\*.dll" "$(TargetDir)"</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
