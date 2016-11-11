@@ -1702,7 +1702,9 @@ double KinChain::getTotalTimeSequence(){
 	if(gaitInterpolationSequence.size() >0){
 		std::vector<double> framesPerCycle = getTimesPerCycle(true);
 		
-		std::cout << "got times per cycle" << std::endl;
+		if (DEBUG_OPTION) {
+			std::cout << "got times per cycle" << std::endl;
+		}
 		for(int i =0; i < framesPerCycle.size(); i++){
 			totalTime += (double)(framesPerCycle[i]);
 		}
@@ -3076,6 +3078,10 @@ void KinChain::computeGaitOptions(){
 	Eigen::VectorXd wheels = Eigen::VectorXd::Zero(primaryLegJoints.size()); // is 1 if this limb is a wheel
 	std::vector<Eigen::Vector2d, Eigen::aligned_allocator<Eigen::Vector2d>>  limbPositions(primaryLegJoints.size());
 	std::vector<int> legOrientations;
+	if (DEBUG_OPTION) {
+		std::cout << "Njoints = " << primaryLegJoints.size() << std::endl;
+	}
+
 	for (unsigned i = 0; i < primaryLegJoints.size(); i++){
 		KinNode_Joint* joint = dynamic_cast<KinNode_Joint*>(primaryLegJoints[i]);
 		if(joint == nullptr){
@@ -3187,199 +3193,209 @@ void KinChain::computeGaitOptions(){
 	std::vector<GaitConfig> possibleGaits;
 	std::vector<double> zeroVecSTD = std::vector<double>(nRuns-1);
 	for (int i = 0; i< zeroVecSTD.size(); i++){zeroVecSTD[i] =0;}
-	for(unsigned i = 0; i <pow((double) nRuns,(double)(Nlimbs)) ; i++){
-		GaitConfig gait;
-		bool isAllowed = true;
-		Eigen::VectorXd conn = Eigen::VectorXd::Zero(Nlimbs);
-		int num = i;
-		gait.configIdPerRun = zeroVecSTD;
-		for(unsigned j= 0; j < Nlimbs; j++){
-			 int r = num%nRuns;
-			 num /= nRuns;
-			 conn(j) = r;
-			 // leg j in on on time = r
-			 if(r >0){
-				 gait.configIdPerRun[r-1] = gait.configIdPerRun[r-1] + pow(2.0, (double)j);
-			 }
-			 if((r == 0) && !wheels(j)){
-				 isAllowed = false; 
-			 }
-		}
+	if (Nlimbs > 0){
+		for(unsigned i = 0; i <pow((double) nRuns,(double)(Nlimbs)) ; i++){
+			GaitConfig gait;
+			bool isAllowed = true;
+			Eigen::VectorXd conn = Eigen::VectorXd::Zero(Nlimbs);
+			int num = i;
+			gait.configIdPerRun = zeroVecSTD;
+			for(unsigned j= 0; j < Nlimbs; j++){
+				 int r = num%nRuns;
+				 num /= nRuns;
+				 conn(j) = r;
+				 // leg j in on on time = r
+				 if(r >0){
+					 gait.configIdPerRun[r-1] = gait.configIdPerRun[r-1] + pow(2.0, (double)j);
+				 }
+				 if((r == 0) && !wheels(j)){
+					 isAllowed = false; 
+				 }
+			}
 
-		//std::cout <<"gait.configIdPerRun = ";
-		//for each (auto a in gait.configIdPerRun)
-		//	std::cout << a << ", ";
-		//std::cout << std::endl;
+			//std::cout <<"gait.configIdPerRun = ";
+			//for each (auto a in gait.configIdPerRun)
+			//	std::cout << a << ", ";
+			//std::cout << std::endl;
 
 
-		if(isAllowed){
-			// check if each run is allowed. 			
-			//check if it does not already enough
-			//if(true){
-			//make sure that all wheels move
-			//double error = (conn.dot(notWheels)
- 			bool hasReachedTheLast = false;
-			gait.stability = 0;
-			gait.speed = nRuns-1;
-			gait.assignment = conn; 
-			for( unsigned r = 0; r < nRuns-1; r++){
-				gait.stability = gait.stability + configurationValidation[(int)gait.configIdPerRun[r]].second;
-				if(hasReachedTheLast && (gait.configIdPerRun[r] !=0)){
-					isAllowed = false;
-				}
-				if((gait.configIdPerRun[r] ==0)){
-					if((!hasReachedTheLast)){
-						gait.speed = r;
-					}
-					hasReachedTheLast = true;
-				}else{
-					if(!configurationValidation[(int)gait.configIdPerRun[r]].first){
+			if(isAllowed){
+				// check if each run is allowed. 			
+				//check if it does not already enough
+				//if(true){
+				//make sure that all wheels move
+				//double error = (conn.dot(notWheels)
+ 				bool hasReachedTheLast = false;
+				gait.stability = 0;
+				gait.speed = nRuns-1;
+				gait.assignment = conn; 
+				for( unsigned r = 0; r < nRuns-1; r++){
+					gait.stability = gait.stability + configurationValidation[(int)gait.configIdPerRun[r]].second;
+					if(hasReachedTheLast && (gait.configIdPerRun[r] !=0)){
 						isAllowed = false;
 					}
+					if((gait.configIdPerRun[r] ==0)){
+						if((!hasReachedTheLast)){
+							gait.speed = r;
+						}
+						hasReachedTheLast = true;
+					}else{
+						if(!configurationValidation[(int)gait.configIdPerRun[r]].first){
+							isAllowed = false;
+						}
+					}
 				}
-			}
 
-		//	std::cout << "is allowed" << std::endl;
-		//	std::cout << "for i = " << i << "gait = " << conn.transpose() << "speed = " << gait.speed << "configIdPerRun = " ; // << std::endl;
-		//	for(int b = 0; b< gait.configIdPerRun.size(); b++){ std::cout << gait.configIdPerRun[b] <<  " ";}
+			//	std::cout << "is allowed" << std::endl;
+			//	std::cout << "for i = " << i << "gait = " << conn.transpose() << "speed = " << gait.speed << "configIdPerRun = " ; // << std::endl;
+			//	for(int b = 0; b< gait.configIdPerRun.size(); b++){ std::cout << gait.configIdPerRun[b] <<  " ";}
 
-		}	
+			}	
 		
 			
-		if(isAllowed){
+			if(isAllowed){
 
 
-			std::sort(gait.configIdPerRun.begin(), gait.configIdPerRun.end());
-			//std::cout << "sorted  = " ; // << std::endl;
-			//for(int b = 0; b< gait.configIdPerRun.size(); b++){ std::cout << gait.configIdPerRun[b] <<  " ";}
-			//std::cout << std::endl;
+				std::sort(gait.configIdPerRun.begin(), gait.configIdPerRun.end());
+				//std::cout << "sorted  = " ; // << std::endl;
+				//for(int b = 0; b< gait.configIdPerRun.size(); b++){ std::cout << gait.configIdPerRun[b] <<  " ";}
+				//std::cout << std::endl;
 			
-			if(possibleGaits.size() ==0){
-				//std::cout << "------------is empty so is adding " << std::endl;
-				possibleGaits.push_back(gait);
-			}else{ 
-				if(std::find_if(possibleGaits.begin(), possibleGaits.end(), gait_compare(gait)) == possibleGaits.end()){
-					//std::cout << "------------did not find is adding " << std::endl;
-					possibleGaits.push_back(gait);			
+				if(possibleGaits.size() ==0){
+					//std::cout << "------------is empty so is adding " << std::endl;
+					possibleGaits.push_back(gait);
+				}else{ 
+					if(std::find_if(possibleGaits.begin(), possibleGaits.end(), gait_compare(gait)) == possibleGaits.end()){
+						//std::cout << "------------did not find is adding " << std::endl;
+						possibleGaits.push_back(gait);			
+					}
 				}
+			}
+
+
+				/*if ((conn.transpose()*configMat).sum() == Nlimbs){
+				Eigen::VectorXd sumtoOne = wheels;
+				GaitConfig gait;
+				gait.assignment = Eigen::VectorXd::Zero(sumtoOne.size());
+				gait.speed = 0;
+				gait.stability = 0;
+				for(unsigned j= 0; j < (N_configurations); j++){
+					if(conn(j)!=0){
+						sumtoOne = sumtoOne + allowedMovingConfigs[j].first;
+						gait.speed = gait.speed+1;
+						gait.stability = gait.stability + allowedMovingConfigs[j].second;
+						gait.assignment = gait.assignment + gait.speed*allowedMovingConfigs[j].first;
+					}
+				}
+				//std::cout << "sumtoOne " << sumtoOne.transpose() << std::endl;
+				//std::cout << "(onesVec -sumtoOne).norm() " << (onesVec -sumtoOne).norm() << std::endl;
+				if((onesVec -sumtoOne).norm() <=0.001){
+					possibleGaits.push_back(gait);
+					std::cout << "found a gait " << gait.assignment.transpose() << " - speed = " << gait.speed << " - stab = " << gait.stability << std::endl;
+
+				}
+			}
+			*/
+		}
+	
+
+
+
+
+		//Step 3: sort for stability and speed
+		std::sort(possibleGaits.begin(), possibleGaits.end(), gaitSpeedStabilityCompare);
+
+		if(DEBUG_OPTION){
+			std::cout << "Found Gaits: " << possibleGaits.size() <<  std::endl;
+			for(int i = 0; i < possibleGaits.size(); i++){
+				std::cout << "cofiguration " << possibleGaits[i].assignment.transpose()  << " - speed = " << possibleGaits[i].speed << " - stab = " << possibleGaits[i].stability << std::endl;
 			}
 		}
 
 
-			/*if ((conn.transpose()*configMat).sum() == Nlimbs){
-			Eigen::VectorXd sumtoOne = wheels;
-			GaitConfig gait;
-			gait.assignment = Eigen::VectorXd::Zero(sumtoOne.size());
-			gait.speed = 0;
-			gait.stability = 0;
-			for(unsigned j= 0; j < (N_configurations); j++){
-				if(conn(j)!=0){
-					sumtoOne = sumtoOne + allowedMovingConfigs[j].first;
-					gait.speed = gait.speed+1;
-					gait.stability = gait.stability + allowedMovingConfigs[j].second;
-					gait.assignment = gait.assignment + gait.speed*allowedMovingConfigs[j].first;
-				}
-			}
-			//std::cout << "sumtoOne " << sumtoOne.transpose() << std::endl;
-			//std::cout << "(onesVec -sumtoOne).norm() " << (onesVec -sumtoOne).norm() << std::endl;
-			if((onesVec -sumtoOne).norm() <=0.001){
-				possibleGaits.push_back(gait);
-				std::cout << "found a gait " << gait.assignment.transpose() << " - speed = " << gait.speed << " - stab = " << gait.stability << std::endl;
 
+		// create the 3 default gait options:
+		if (DEBUG_OPTION) {
+			std::cout << "Adding 4 default gaits" << possibleGaits.size() <<  std::endl;
+		}
+		std::vector<std::pair<int, double> >simpleGait_straight;
+		for(int i = 0; i< Nlimbs; i++){
+			if(wheels(i)){
+				simpleGait_straight.push_back(std::pair<int, double>(0, 60.));
+			}else{
+				simpleGait_straight.push_back(std::pair<int, double>(1, 60.));
 			}
 		}
-		*/
-	}
+		gaitOptions.gaitOptions.push_back(simpleGait_straight);
+		std::vector<std::pair<int, double> >simpleGait_back;
+		for(int i = 0; i< Nlimbs; i++){
+			if(wheels(i)){
+				simpleGait_back.push_back(std::pair<int, double>(0, -60.));
+			}else{
+				simpleGait_back.push_back(std::pair<int, double>(1, -60.));
+			}
+		}
+		gaitOptions.gaitOptions.push_back(simpleGait_back);
+		std::vector<int> sides;
+		bool hasLeft = false;
+		bool hasRight = false;
+		for(int i = 0; i< Nlimbs; i++){
+			if(legOrientations[i] < 0){
+				hasLeft = true;
+			}
+			if(legOrientations[i] > 0){
+				hasRight = true;
+			}
+		}
+		if(hasLeft && hasRight){
+			std::vector<std::pair<int, double> >simpleGait_right;
+			std::vector<std::pair<int, double> >simpleGait_left;
+			for(int i = 0; i< Nlimbs; i++){
+				if(wheels(i)){
+					simpleGait_right.push_back(std::pair<int, double>(0, legOrientations[i]*30.));
+					simpleGait_left.push_back(std::pair<int, double>(0, -1.*legOrientations[i]*30.));
+				}else{
+					simpleGait_right.push_back(std::pair<int, double>(1, legOrientations[i]*30.));
+					simpleGait_left.push_back(std::pair<int, double>(1, -1.*legOrientations[i]*30.));
+				}
+			}
+
+			gaitOptions.gaitOptions.push_back(simpleGait_right);
+			gaitOptions.gaitOptions.push_back(simpleGait_left);
+
+		}
 
 
-
-
-
-	//Step 3: sort for stability and speed
-	std::sort(possibleGaits.begin(), possibleGaits.end(), gaitSpeedStabilityCompare);
-
-	if(DEBUG_OPTION){
-		std::cout << "Found Gaits: " << possibleGaits.size() <<  std::endl;
+		// add the stable gait options;
+		/*if(possibleGaits.size() == 0){
+			std::vector<std::pair<int, double> >defautl_gait;
+			int count = 1;
+			for(int i = 0; i< Nlimbs; i++){
+				if(wheels(i)){
+					defautl_gait.push_back(std::pair<int, double>(0, 30.));
+				}else{
+					defautl_gait.push_back(std::pair<int, double>(count, 30.));
+					count++;
+				}
+			}
+			gaitOptions.gaitOptions.push_back(defautl_gait);
+		}*/
 		for(int i = 0; i < possibleGaits.size(); i++){
-			std::cout << "cofiguration " << possibleGaits[i].assignment.transpose()  << " - speed = " << possibleGaits[i].speed << " - stab = " << possibleGaits[i].stability << std::endl;
-		}
-	}
-
-
-
-	// create the 3 default gait options:
-	std::vector<std::pair<int, double> >simpleGait_straight;
-	for(int i = 0; i< Nlimbs; i++){
-		if(wheels(i)){
-			simpleGait_straight.push_back(std::pair<int, double>(0, 60.));
-		}else{
-			simpleGait_straight.push_back(std::pair<int, double>(1, 60.));
-		}
-	}
-	gaitOptions.gaitOptions.push_back(simpleGait_straight);
-	std::vector<int> sides;
-	bool hasLeft = false;
-	bool hasRight = false;
-	for(int i = 0; i< Nlimbs; i++){
-		if(legOrientations[i] < 0){
-			hasLeft = true;
-		}
-		if(legOrientations[i] > 0){
-			hasRight = true;
-		}
-	}
-	if(hasLeft && hasRight){
-		std::vector<std::pair<int, double> >simpleGait_right;
-		std::vector<std::pair<int, double> >simpleGait_left;
-		for(int i = 0; i< Nlimbs; i++){
-			if(wheels(i)){
-				simpleGait_right.push_back(std::pair<int, double>(0, legOrientations[i]*30.));
-				simpleGait_left.push_back(std::pair<int, double>(0, -1.*legOrientations[i]*30.));
-			}else{
-				simpleGait_right.push_back(std::pair<int, double>(1, legOrientations[i]*30.));
-				simpleGait_left.push_back(std::pair<int, double>(1, -1.*legOrientations[i]*30.));
+			std::vector<std::pair<int, double>  > gaitOption(possibleGaits[i].assignment.size());
+			for(int j = 0; j <gaitOption.size(); j++){
+				//if(wheels.sum() ==0){
+				//	gaitOption[j] = possibleGaits[i].assignment(j) - 1;
+				//}else{
+					gaitOption[j].first = possibleGaits[i].assignment(j);
+					gaitOption[j].second =  30; 
+				//}
 			}
+			gaitOptions.gaitOptions.push_back(gaitOption);
 		}
 
-		gaitOptions.gaitOptions.push_back(simpleGait_right);
-		gaitOptions.gaitOptions.push_back(simpleGait_left);
-
-	}
-		
-	
-	
-
-
-	// add the stable gait options;
-	if(possibleGaits.size() == 0){
-		std::vector<std::pair<int, double> >defautl_gait;
-		int count = 1;
-		for(int i = 0; i< Nlimbs; i++){
-			if(wheels(i)){
-				defautl_gait.push_back(std::pair<int, double>(0, 30.));
-			}else{
-				defautl_gait.push_back(std::pair<int, double>(count, 30.));
-				count++;
-			}
-		}
-		gaitOptions.gaitOptions.push_back(defautl_gait);
-	}
-	for(int i = 0; i < possibleGaits.size(); i++){
-		std::vector<std::pair<int, double>  > gaitOption(possibleGaits[i].assignment.size());
-		for(int j = 0; j <gaitOption.size(); j++){
-			//if(wheels.sum() ==0){
-			//	gaitOption[j] = possibleGaits[i].assignment(j) - 1;
-			//}else{
-				gaitOption[j].first = possibleGaits[i].assignment(j);
-				gaitOption[j].second =  30; 
-			//}
-		}
-		gaitOptions.gaitOptions.push_back(gaitOption);
-	}
-
-	//createNewGaitOptionFromSuggestion(0);
-	//selectedGaitOption = defautl_gait; 
-	
+		//createNewGaitOptionFromSuggestion(0);
+		//selectedGaitOption = defautl_gait; 
+	}	
 
 }
 

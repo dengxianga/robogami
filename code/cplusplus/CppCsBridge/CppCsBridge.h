@@ -731,7 +731,12 @@ namespace CppCsBridge {
 		}
 
 		void Remove() {
-			tmpl->remove();
+			if (tmpl->isLeaf()) {
+				tmpl->getParent()->remove();
+			} else {
+				tmpl->remove();
+			}
+
 		}
 
 
@@ -1330,6 +1335,10 @@ namespace CppCsBridge {
 
 		void generateFoldableSTL() {
 			ui->generateFoldableSTL();
+		}
+
+		void updateKinchain() {
+			ui->workingTemplates[0]->kinchain = new KinChain(ui->workingTemplates[0]->tmpl);
 		}
 		
 		void Rotate(TemplateRef ref, System::Windows::Media::Media3D::Quaternion q, System::Windows::Media::Media3D::Point3D center)

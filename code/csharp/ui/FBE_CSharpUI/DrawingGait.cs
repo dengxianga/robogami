@@ -53,8 +53,8 @@ namespace FBE_CSharpUI
             ymin = Ys.Min();
             ymax = Ys.Max();
 
-            double width = mainCanvas.ActualWidth - 10;
-            double height = mainCanvas.ActualHeight - 10;
+            double width = Math.Max(mainCanvas.ActualWidth - 10, 0);
+            double height = Math.Max(mainCanvas.ActualHeight - 10, 0);
             double marginRatio = 0.6;
             double scale = Math.Min(width * (1 - marginRatio) / (xmax - xmin), height * (1 - marginRatio) / (ymax - ymin));
             //Console.WriteLine(scale + " " + width + " " + height + " " + xmin + " " + xmax + " " + ymin + " " + ymax);

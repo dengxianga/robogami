@@ -7,7 +7,7 @@ namespace FabByExample{
 	class PrintingParameters
 	{
 	public:
-		static bool isPrint(){return false;}
+		static bool isPrint(){return true;}
 		static double getResolution(){
 			if (isPrint())
 				return 20;

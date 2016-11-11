@@ -168,7 +168,6 @@ public:
 	// segregate() is that remove() will make this template invalid instead, and
 	// preserves the validity of the parent template and the tree it's contained in.
 	//
-	// TODO(robin, wei): Implement.
 	void remove();
 
 #pragma endregion

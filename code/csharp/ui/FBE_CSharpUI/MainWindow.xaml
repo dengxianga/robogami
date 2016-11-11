@@ -733,7 +733,25 @@
 
 
             <TabControl Grid.Row="3" Grid.ColumnSpan="2" Name="GaitTabControl" SelectionChanged="updateTheSelectedGaitTab_clicked" >
-                <TabItem Header="Edit" Name="EditGaitTab" >
+                <TabItem Header="Suggestions" Name="SuggestionsTab">
+                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Orientation="Horizontal" Grid.Row="0" x:Name="alternativeViews">
+                            </StackPanel>
+
+
+                            <StackPanel Orientation="Horizontal" Grid.Row="1" x:Name="alternativeViews2">
+                            </StackPanel>
+
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Edit" Name="EditGaitTab" IsEnabled="False">
                     <Grid >
                         <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
 
@@ -759,6 +777,10 @@
                                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
                                     </Button>
 
+                                    <Button Name ="StopAnimate" Width="100" Click="StopAnimate_clicked"  Margin="50,0,0,0" IsEnabled="False">
+                                        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stop</TextBlock>
+                                    </Button>
+
 
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
@@ -777,25 +799,7 @@
                     </Grid>
 
                 </TabItem>
-                <TabItem Header="Suggestions" Name="SuggestionsTab">
-                    <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="1*"/>
-                                <RowDefinition Height="1*"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Orientation="Horizontal" Grid.Row="0" x:Name="alternativeViews">
-                            </StackPanel>
-
-
-                            <StackPanel Orientation="Horizontal" Grid.Row="1" x:Name="alternativeViews2">
-                            </StackPanel>
-
-                        </Grid>
-                    </ScrollViewer>
-                </TabItem>
-
-                <TabItem Header="Motion Sequence" Name="SequenceTab" >
+                <TabItem Header="Motion Sequence" Name="SequenceTab" IsEnabled="False">
                     <Grid>
                         <Grid.RowDefinitions>
                

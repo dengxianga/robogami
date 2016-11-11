@@ -133,6 +133,8 @@ namespace FBE_CSharpUI {
         TaskLogs taskLogs; 
         int draggedLabel;
         private double requiredSpeedTask;
+        private bool doAnimation = false;
+        private Timer animateTimer;
 
         private static string defaultPath = "..\\..\\data\\";
         //private static string defaultPath = "..\\Robogami\\data\\";
@@ -728,6 +730,8 @@ namespace FBE_CSharpUI {
 
             UpdateSavedViewMenuItems();
             RefreshUIState();
+
+            animateTimer = new Timer();
         }
 
 
@@ -1084,6 +1088,7 @@ namespace FBE_CSharpUI {
                 }
                 else {
                     tmpl.Remove();
+                    uiInstance.updateKinchain();
                 }
                 _uiStates.Selection = Selection.Empty;
                 handleUpdatesFromShapeChange(true);
@@ -1516,14 +1521,23 @@ namespace FBE_CSharpUI {
 
         void drawAnimation(List<Mesh> listOfGeo, List<bool> listOfStabilityCost, int slowdow)
         {
+            if (doAnimation)
+            {
+                animateTimer.Stop();
+                animateTimer.Enabled = false;
+                doAnimation = false;
+            }
 
-            Timer timer = new Timer();
+            StopAnimate.IsEnabled = true;
+
+            animateTimer = new Timer();
             DateTime startTime = DateTime.Now;
             TimeSpan duration = new TimeSpan(0, 0, 2);
             int counter = 0;
-            timer.Tick += new EventHandler((object sender1, EventArgs e1) =>
+            doAnimation = true;
+            animateTimer.Tick += new EventHandler((object sender1, EventArgs e1) =>
             {
-                if (counter < listOfGeo.Count)
+                if (counter < listOfGeo.Count && doAnimation)
                 {
                     List<Mesh> meshes = new List<Mesh>();
                     List<bool> colors = new List<bool>();
@@ -1546,12 +1560,15 @@ namespace FBE_CSharpUI {
                 }
                 else
                 {
-                    timer.Stop();
+                    animateTimer.Stop();
+                    doAnimation = false;
+                    animateTimer.Enabled = false;
+                    StopAnimate.IsEnabled = false;
                 }
             });
 
-            timer.Interval = 12*slowdow;
-            timer.Enabled = true;
+            animateTimer.Interval = 12*slowdow;
+            animateTimer.Enabled = true;
 
 
         }
@@ -1560,6 +1577,13 @@ namespace FBE_CSharpUI {
         void handleAnimate(int gaitID, int slowMotio=1, bool changePose=true)
         {
             uiInstance.Save(_uiStates.saveFileName);
+
+            if (doAnimation)
+            {
+                doAnimation = false;
+                animateTimer.Stop();
+                animateTimer.Enabled = false;
+            }
             
             bool useSteadyState = _uiStates.useSteadyState;
             bool doSequence = false;
@@ -1610,6 +1634,11 @@ namespace FBE_CSharpUI {
 
             drawAnimation(listOfGeo, listOfStabilityCost, slowMotio);
          
+        }
+
+        private void StopAnimate_clicked(object sender, RoutedEventArgs e)
+        {
+            doAnimation = false;
         }
 
 
@@ -2373,11 +2402,12 @@ namespace FBE_CSharpUI {
         private void updateGaitSuggestionsTab()
         {
 
+            alternativeViews.Children.Clear();
+            alternativeViews2.Children.Clear();
+
             if (jointChoices != null)
             {
 
-                alternativeViews.Children.Clear();
-                alternativeViews2.Children.Clear();
 
                 for (int i = 0; (i < jointChoices.Labelings.Count); i++)
                 {
@@ -2395,7 +2425,11 @@ namespace FBE_CSharpUI {
                         uiInstance.updateJointGaitChoice(iCopy);
                         updateListOfSavedGait(-1);
 
+                        EditGaitTab.IsEnabled = true;
+                        SequenceTab.IsEnabled = true;
+
                         EditGaitTab.IsSelected = true;
+
                         updateEditGaitTab();
                         updateMetrics(); 
 
@@ -2493,8 +2527,9 @@ private void ChangeMotionSequenceSize_clicked(object sender, RoutedEventArgs e){
 
 private void clearScene()
 {
+    handleUpdatesFromTopoChange();
 
-    updateEditGaitTab();
+    updateTheSelectedGaitTab();
     updateMetrics();
 }
 
@@ -2640,6 +2675,32 @@ private void clearCurrentSequence(){
 
 }
 
+private void handleUpdatesFromTopoChange()
+{
+    jointChoices = uiInstance.GetJointChoices();
+    updateListOfSavedGait(0);
+
+    SuggestionsTab.IsSelected = true;
+    EditGaitTab.IsEnabled = false;
+    SequenceTab.IsEnabled = false;
+
+    currentSequence = uiInstance.getSequence();
+    if (currentSequence != null)
+    {
+        InputMotionSequenceSize.Value = currentSequence.Count;
+        if (currentSequence.Count == 0)
+        {
+            clearCurrentSequence();
+        }
+    }
+    //updateTheSelectedGaitTab();
+    //uiInstance.updateControllers(); // the get joint choices already does it
+    UpdateSymmetrySelectionUI();
+    _uiStates.selecteMetric_Gait = -1;
+    _uiStates.selecteMetric_Objective = -1;
+
+}
+
  private void handleUpdatesFromShapeChange(bool connectedNewPart)
  {
      //geometry updates
@@ -2649,19 +2710,7 @@ private void clearCurrentSequence(){
      RefreshUIState(); // includes RefreshViews();
 
      if (connectedNewPart){
-         jointChoices = uiInstance.GetJointChoices();
-         updateListOfSavedGait(0);
-         currentSequence = uiInstance.getSequence();
-         InputMotionSequenceSize.Value = currentSequence.Count; 
-         if (currentSequence.Count == 0)
-         {
-             clearCurrentSequence();
-         }
-         //updateTheSelectedGaitTab();
-         //uiInstance.updateControllers(); // the get joint choices already does it
-         UpdateSymmetrySelectionUI();
-         _uiStates.selecteMetric_Gait = -1;
-         _uiStates.selecteMetric_Objective = -1; 
+         handleUpdatesFromTopoChange();
      }
      updateTheSelectedGaitTab();
      //uiInstance.updateControllers(GaitList_ComboBox.SelectedIndex);
