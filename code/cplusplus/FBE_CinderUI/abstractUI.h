@@ -33,6 +33,7 @@ public:
 	PatchPair handleSnap(PatchPair const& current, double maxDistance);
 	void handleMultiSnap(double maxDistance);
 	void handleConnect();
+	void handleDelete();
 	void snapToGround() ;
 	std::vector<NewPatch *> getClossestPatch(); 
 

@@ -1326,19 +1326,23 @@ namespace CppCsBridge {
 			return result;
         }
 
-		bool hasMainWorkignTemp(){
+		bool hasMainWorkingTemp(){
 			if (ui->workingTemplates.size() >0) {
 				return true;
 			}
 			return false;
 		}
 
+		int numWorkingTemp() {
+			return ui->workingTemplates.size();
+		}
+
 		void generateFoldableSTL() {
 			ui->generateFoldableSTL();
 		}
 
-		void updateKinchain() {
-			ui->workingTemplates[0]->kinchain = new KinChain(ui->workingTemplates[0]->tmpl);
+		void handleDelete() {
+			ui->handleDelete();
 		}
 		
 		void Rotate(TemplateRef ref, System::Windows::Media::Media3D::Quaternion q, System::Windows::Media::Media3D::Point3D center)

@@ -313,7 +313,7 @@ namespace FBE_CSharpUI {
             List<double> rotationAngles = new List<double>();
 
 
-            if(uiInstance.hasMainWorkignTemp()){
+            if(uiInstance.hasMainWorkingTemp()){
 
             if (_uiStates.ForwardTravel) // just update one gait and show one tab
             {
@@ -720,7 +720,7 @@ namespace FBE_CSharpUI {
 
             symmetryChooser.Update += (symm_ground, symm_legW, symm_legL, symm_spacing) =>
             {
-                if (uiInstance.hasMainWorkignTemp())
+                if (uiInstance.hasMainWorkingTemp())
                 {
                     uiInstance.SetSymmetryChoice(symm_ground, symm_legW, symm_legL, symm_spacing);
                     RefreshViews();
@@ -774,6 +774,15 @@ namespace FBE_CSharpUI {
 
         private void cppGlSurface_DragEnter(object sender, DragEventArgs e) {
             if (e.Data.GetDataPresent("templateFilename") && !(true.Equals(e.Data.GetData("invalid")))) {
+                // check if there were any unconnected templates before
+                int Ntemp = uiInstance.numWorkingTemp();
+                if (Ntemp > 1)
+                {
+                    uiInstance.HandleConnect();
+                }
+                doAnimation = false;
+
+                // add the dragged template
                 e.Data.SetData("invalid", true);
                 e.Effects = DragDropEffects.Copy;
                 //loading the template 
@@ -781,7 +790,7 @@ namespace FBE_CSharpUI {
                 String templateFilename = data._fileName;
                 int templateID = data._id;
 
-                bool wasEmptyBefore = !uiInstance.hasMainWorkignTemp();
+                bool wasEmptyBefore = !uiInstance.hasMainWorkingTemp();
                 // Console.Write("dropping template with " + templateFilename + " with ID " + templateID);
                 templateToAdd = uiInstance.AddProtoTemplate(templateFilename, templateID, e.GetPosition(NewMeshView));
                 //uiInstance.Rotate(templateToAdd, new Quaternion(new Vector3D(1, 0, 0), -90), templateToAdd.Center);
@@ -1088,7 +1097,7 @@ namespace FBE_CSharpUI {
                 }
                 else {
                     tmpl.Remove();
-                    uiInstance.updateKinchain();
+                    uiInstance.handleDelete();
                 }
                 _uiStates.Selection = Selection.Empty;
                 handleUpdatesFromShapeChange(true);
@@ -1238,7 +1247,7 @@ namespace FBE_CSharpUI {
             double x = NewMeshView.ActualWidth / 2;
             double y = NewMeshView.ActualHeight / 2;
             System.Windows.Point point = new System.Windows.Point(x, y);
-            bool wasEmptyBefore = !uiInstance.hasMainWorkignTemp();
+            bool wasEmptyBefore = !uiInstance.hasMainWorkingTemp();
 
             TemplateRef tmpl = uiInstance.AddProtoTemplate(filename, 0, point);
             //uiInstance.Rotate(tmpl, new Quaternion(new Vector3D(1, 0, 0), -90), tmpl.Center);
@@ -1904,7 +1913,7 @@ namespace FBE_CSharpUI {
                 uiInstance.HandleSnapToGround();
             }
 
-            if (uiInstance.hasMainWorkignTemp())
+            if (uiInstance.hasMainWorkingTemp())
             {
                 _ui3D.Deselect();
                 //UpdateSymmetrySelectionUI(selection.SelectedTemplate);
@@ -2383,7 +2392,7 @@ namespace FBE_CSharpUI {
 
         private void UpdateSymmetrySelectionUI()
         {
-           if (!uiInstance.hasMainWorkignTemp())
+           if (!uiInstance.hasMainWorkingTemp())
             {
                 symmetryChooser.Visibility = Visibility.Collapsed;
             }

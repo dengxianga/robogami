@@ -1193,9 +1193,9 @@ void WorkingTemplate::replaceShoulderJoints(){
 		if(isShoulder){
 			controller->setType(GrammarController::GrammarcontrollerType::DOUBLE_SHOULDED);
 		}else{
-			//if(controller->getType() != GrammarController::GrammarcontrollerType::WHEEL){
-			//	controller->setType(GrammarController::GrammarcontrollerType::LEG);;
-			//}
+			if(controller->getType() != GrammarController::GrammarcontrollerType::WHEEL){
+				controller->setType(GrammarController::GrammarcontrollerType::LEG);;
+			}
 		}
 	}
 	

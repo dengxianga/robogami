@@ -1160,6 +1160,9 @@ void testComposition(){
 	combinedTemplate->getGeometry()->write("..\\..\\data\\combinedExample2.stl");
 
 
+	WorkingTemplate * wTemp = new WorkingTemplate(combinedTemplate);
+	wTemp->kinchain->displayTree();
+
 }
 
 void realignProtos(){
@@ -1815,7 +1818,8 @@ int main(int argc, char* argv[])
 
 //	testPrinting("..\\..\\data\\proto2016\\BodyT\\template.asciiproto", "BodyT");	 
 
-	testPrinting("..\\..\\data\\protoTesting\\jeff.asciiproto", "jeff");	 
+	//testPrinting("..\\..\\data\\protoTesting\\jeff.asciiproto", "jeff");	 
+	testComposition();
 
 	//testPrinting("..\\..\\data\\protoTesting\\WheelCrabBasket.asciiproto", "WheelCrabBasket");	 
 

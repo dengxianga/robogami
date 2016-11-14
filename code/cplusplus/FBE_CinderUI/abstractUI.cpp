@@ -253,6 +253,11 @@ void abstractUI::handleConnect() {
 	workingTemplates.push_back(workingTemplate);
 }
 
+void abstractUI::handleDelete() {
+	workingTemplates[0]->kinchain = new KinChain(workingTemplates[0]->tmpl);
+	workingTemplates[0]->replaceShoulderJoints();
+}
+
 std::vector<NewPatch*> abstractUI::getClossestPatch() {
 	std::vector <NewPatch*> result;
 	if (workingTemplates.size() < 2) {
