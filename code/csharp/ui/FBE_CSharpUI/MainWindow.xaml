@@ -815,12 +815,16 @@
                         
                         <Label Content="Motion sequence:" Margin="20,0,0 0" Grid.Row="2"></Label>
 
-                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,0,0" Grid.Row="2" >
+                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,200,0" Grid.Row="2" >
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
                         </Button>
 
+                        <Button Name ="StopAnimateSequence" Width="100" Click="StopAnimate_clicked"  VerticalAlignment="Top" HorizontalAlignment="Right"   Margin="50,0,50,0" IsEnabled="False" Grid.Row="2">
+                            <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stop</TextBlock>
+                        </Button>
+
                         <Label Content="Length of motion sequence:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
-                        <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
+                        <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" Minimum="0" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
 
                         <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas"></Canvas>
                     </Grid>

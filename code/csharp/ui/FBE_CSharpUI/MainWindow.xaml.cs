@@ -1542,6 +1542,7 @@ namespace FBE_CSharpUI {
             }
 
             StopAnimate.IsEnabled = true;
+            StopAnimateSequence.IsEnabled = true;
 
             animateTimer = new Timer();
             DateTime startTime = DateTime.Now;
@@ -1577,6 +1578,7 @@ namespace FBE_CSharpUI {
                     doAnimation = false;
                     animateTimer.Enabled = false;
                     StopAnimate.IsEnabled = false;
+                    StopAnimateSequence.IsEnabled = false;
                 }
             });
 
@@ -1669,8 +1671,10 @@ namespace FBE_CSharpUI {
 
         private void AnimateSequence_clicked(object sender, RoutedEventArgs e)
         {
-            handleAnimate(-1);
-
+            if ((int)(InputMotionSequenceSize.Value) > 0)
+            {
+                handleAnimate(-1);
+            }
         }
 
         private void HandleAnimateCommand(object sender, ExecutedRoutedEventArgs e) {
@@ -2514,7 +2518,19 @@ private void updateSquenceGaitTab()
 private void ChangeMotionSequenceSize_clicked(object sender, RoutedEventArgs e){
     if (uiInstance != null)
     {
-        int val = (int)InputMotionSequenceSize.Value;
+        int val = (int)(InputMotionSequenceSize.Minimum);
+        if (InputMotionSequenceSize.Value != null)
+        {
+            val = (int)InputMotionSequenceSize.Value;
+        }
+        else
+        {
+            InputMotionSequenceSize.Value = InputMotionSequenceSize.Minimum;
+        }
+        if (val < InputMotionSequenceSize.Minimum) {
+            val = (int)(InputMotionSequenceSize.Minimum);
+            InputMotionSequenceSize.Value = InputMotionSequenceSize.Minimum;
+        }
         _uiStates.motionSequenceLen = val;
         updateSquenceGaitTab();
         int addLen = val - currentSequence.Count;
