@@ -112,8 +112,8 @@ namespace FBE_CSharpUI {
         private UIInstance uiInstance;
         private Sidebar sidebar;
         private const int thumbnailSize = 64;
-        private List<ImageSource> savedViewThumbnails = new List<ImageSource>();
-        private List<int> savedViewIds = new List<int>();
+        //private List<ImageSource> savedViewThumbnails = new List<ImageSource>();
+        //private List<int> savedViewIds = new List<int>();
         private UI3D _ui3D;
         private UIStates _uiStates;
         private System.Windows.Point? lastPosition1;
@@ -122,7 +122,7 @@ namespace FBE_CSharpUI {
         private SaveFileDialog dialog;
         private Command command;
         private List<Mesh> ghostMesh;
-        private List<Mesh> ghostMeshSave;
+        //private List<Mesh> ghostMeshSave;
         private Drawing topViewDrawing;
          private BitmapImage topViewImage;
         private Vector drawing_translate;
@@ -719,6 +719,7 @@ namespace FBE_CSharpUI {
             //    }
             //};
 
+            /*
             symmetryChooser.Update += (symm_ground, symm_legW, symm_legL, symm_spacing) =>
             {
                 if (uiInstance.hasMainWorkingTemp())
@@ -728,8 +729,8 @@ namespace FBE_CSharpUI {
                     UpdateSymmetrySelectionUI();
                 }
             };
-
-            UpdateSavedViewMenuItems();
+            */
+            //UpdateSavedViewMenuItems();
 
             RefreshUIState();
 
@@ -939,10 +940,12 @@ namespace FBE_CSharpUI {
             RefreshViews();
             sw3.Stop();
 
+            
             Stopwatch sw4 = new Stopwatch();
             sw4.Start();
             RefreshParameters();
             sw4.Stop();
+            
             // Console.Write("invalidateRequerySuggested cost " + sw2.Elapsed + "\n");
             // Console.Write("refreshViews cost " + sw3.Elapsed + "\n");
             // Console.Write("refhreshParameters cost " + sw4.Elapsed + "\n");
@@ -951,9 +954,10 @@ namespace FBE_CSharpUI {
         private Dictionary<int, DoubleUpDown> paramUpDowns = new Dictionary<int, DoubleUpDown>();
         private bool suppressParamValueEvent = false;
         // Refresh list of parameters in parameters canvas
+        
         private void RefreshParameters() {
             if (true) return; // disabling for now; causes slowness.
-            stackPanelParameters.Children.Clear();
+            //stackPanelParameters.Children.Clear();
             paramUpDowns.Clear();
             int nParameters = uiInstance.getTemplate0Parameters().Count;
             for (int i = 0; i < nParameters; i++) {
@@ -973,12 +977,12 @@ namespace FBE_CSharpUI {
                     RefreshUIState();
                     UpdateParameters();
                 };
-                stackPanelParameters.Children.Add(dud);
+                //stackPanelParameters.Children.Add(dud);
                 paramUpDowns[i] = dud;
             }
             UpdateParameters();
         }
-
+        
         private void UpdateParameters() {
             List<double> qs = uiInstance.getTemplate0Parameters();
             for (int i = 0; i < qs.Count; i++) {
@@ -1007,6 +1011,7 @@ namespace FBE_CSharpUI {
             List<Mesh> meshes = uiInstance.getMeshes();
             sw1.Stop();
             // // Console.WriteLine("time to get meshes is " + sw1.Elapsed);
+            /*
             sw2.Start();
             var selection = _uiStates.Selection;
             if (selection.Type != Selection.SelectionType.None) {
@@ -1023,13 +1028,17 @@ namespace FBE_CSharpUI {
             }
 
             sw2.Stop();
+            */
             // // Console.WriteLine("time for drawingDraw.Draw is " + sw2.Elapsed);
+            
             sw3.Start();
             _ui3D.Draw(meshes, ghostMesh);
             sw3.Stop();
+            
             // // Console.WriteLine("time for _ui3D.Draw is " + sw3.Elapsed);
             
             //this.DebugView.Items.Clear();
+            /*
             Dictionary<string, DebuggableRef> debuggables = new Dictionary<string, DebuggableRef>();
             for (int i = 0; i < uiInstance.getTemplates().Count; i++) {
                 var tmpl = uiInstance.getTemplates()[i];
@@ -1037,6 +1046,7 @@ namespace FBE_CSharpUI {
             }
             Debugging.render(debuggables, DebugView);
             sw.Stop();
+             * */
             // // Console.WriteLine("time to refreshViews is " + sw.Elapsed);
         }
 
@@ -1051,7 +1061,7 @@ namespace FBE_CSharpUI {
         private void HandleNewCommand(object sender, ExecutedRoutedEventArgs e) {
             uiInstance.HandleClear(); //update meshviews
             DrawingCanvas.Children.Clear(); //clear 2d views
-            DrawingCanvas2.Children.Clear(); //clear 2d views
+            //DrawingCanvas2.Children.Clear(); //clear 2d views
             //InputMotionSequenceSize.Value = 0; 
             _uiStates.Selection = Selection.Empty;
             _uiStates.SnappingState = null;
@@ -1123,6 +1133,7 @@ namespace FBE_CSharpUI {
             e.CanExecute = true;
         }
 
+        /*
         private void HandleAvoidObstacle(object sender, ExecutedRoutedEventArgs e)
         {
             _uiStates.showGhost = false;
@@ -1145,10 +1156,10 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
 
             // TODO: implement            
-            ForwardModeB.IsChecked = false;
-            ForwardModeA.IsChecked = false;
-            DesignCar.IsChecked = false;
-            AvoidObstable.IsChecked = true;
+            //ForwardModeB.IsChecked = false;
+            //ForwardModeA.IsChecked = false;
+            //DesignCar.IsChecked = false;
+            //AvoidObstable.IsChecked = true;
 
             _uiStates.DesignCar = false;
             _uiStates.AvoidObstacle = true;
@@ -1189,10 +1200,10 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
 
             // TODO: implement
-            ForwardModeB.IsChecked = false;
-            ForwardModeA.IsChecked = false;
-            DesignCar.IsChecked = true;
-            AvoidObstable.IsChecked = false;
+            //ForwardModeB.IsChecked = false;
+            //ForwardModeA.IsChecked = false;
+            //DesignCar.IsChecked = true;
+            //AvoidObstable.IsChecked = false;
             _uiStates.DesignCar = true;
             _uiStates.AvoidObstacle = false;
             _uiStates.ForwardTravel = false;
@@ -1226,10 +1237,10 @@ namespace FBE_CSharpUI {
             _uiStates.Selection = Selection.Empty;
             _uiStates.SnappingState = null;
             // TODO: implement
-            ForwardModeB.IsChecked = false;
-            ForwardModeA.IsChecked = false;
-            DesignCar.IsChecked = false;
-            AvoidObstable.IsChecked = false;
+            //ForwardModeB.IsChecked = false;
+            //ForwardModeA.IsChecked = false;
+            //DesignCar.IsChecked = false;
+            //AvoidObstable.IsChecked = false;
             _uiStates.DesignCar = false;
             _uiStates.AvoidObstacle = false;
             _uiStates.ForwardTravel = false;
@@ -1245,7 +1256,7 @@ namespace FBE_CSharpUI {
             RefreshViews();
             ghostMesh = null; 
         }
-
+        */
         private void openFileFromName(string filename)
         {
             double x = NewMeshView.ActualWidth / 2;
@@ -1260,7 +1271,7 @@ namespace FBE_CSharpUI {
 
         }
 
-
+        /*
         private void HandleStartTimer(object sender, RoutedEventArgs e)
         {
             if (_uiStates != null)
@@ -1303,10 +1314,10 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
 
             // TODO: implement
-            ForwardModeB.IsChecked = false;
-            ForwardModeA.IsChecked = true;
-            DesignCar.IsChecked = false;
-            AvoidObstable.IsChecked = false;
+            //ForwardModeB.IsChecked = false;
+            //ForwardModeA.IsChecked = true;
+            //DesignCar.IsChecked = false;
+            //AvoidObstable.IsChecked = false;
             _uiStates.DesignCar = false;
             _uiStates.AvoidObstacle = false;
             _uiStates.ForwardTravel = true;
@@ -1377,10 +1388,10 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
 
             // TODO: implement
-            ForwardModeB.IsChecked = true;
-            ForwardModeA.IsChecked = false;
-            DesignCar.IsChecked = false;
-            AvoidObstable.IsChecked = false;
+            //ForwardModeB.IsChecked = true;
+            //ForwardModeA.IsChecked = false;
+            //DesignCar.IsChecked = false;
+            //AvoidObstable.IsChecked = false;
             _uiStates.DesignCar = false;
             _uiStates.AvoidObstacle = false;
             _uiStates.ForwardTravel = true;
@@ -1432,11 +1443,11 @@ namespace FBE_CSharpUI {
             int id = _uiStates.UserStudy_ID;
             int showGuides = id % 2;
             int modelParam = ((id - showGuides) / 2) % 2;
-            if (ForwardModeB.IsChecked)
-            {
-                showGuides = 1 - showGuides;
-                modelParam = 1 - modelParam;
-            }
+            //if (ForwardModeB.IsChecked)
+            //{
+            //    showGuides = 1 - showGuides;
+            //    modelParam = 1 - modelParam;
+            //}
             _uiStates.DisableAllStabilityGuidance = false;
             if (showGuides != 0)
             {
@@ -1468,6 +1479,7 @@ namespace FBE_CSharpUI {
             }
             RefreshViews();
         }
+        */
         
         private void HandleSnapToGroundCommand(object sender, ExecutedRoutedEventArgs e)
         {
@@ -1542,6 +1554,7 @@ namespace FBE_CSharpUI {
             }
 
             StopAnimate.IsEnabled = true;
+            StopAnimateSequence.IsEnabled = true;
 
             animateTimer = new Timer();
             DateTime startTime = DateTime.Now;
@@ -1577,6 +1590,7 @@ namespace FBE_CSharpUI {
                     doAnimation = false;
                     animateTimer.Enabled = false;
                     StopAnimate.IsEnabled = false;
+                    StopAnimateSequence.IsEnabled = false;
                 }
             });
 
@@ -1669,8 +1683,10 @@ namespace FBE_CSharpUI {
 
         private void AnimateSequence_clicked(object sender, RoutedEventArgs e)
         {
-            handleAnimate(-1);
-
+            if ((int)(InputMotionSequenceSize.Value) > 0)
+            {
+                handleAnimate(-1);
+            }
         }
 
         private void HandleAnimateCommand(object sender, ExecutedRoutedEventArgs e) {
@@ -1830,10 +1846,11 @@ namespace FBE_CSharpUI {
 
         private void HandleShowConnectorsCommand(object sender, ExecutedRoutedEventArgs e) {}
 
-        private void HandleUsePerspectiveCameraCommand(object sender, ExecutedRoutedEventArgs e) {
+        /*
+         * private void HandleUsePerspectiveCameraCommand(object sender, ExecutedRoutedEventArgs e) {
             // TODO: implement
         }
-
+        */
         private void CanSaveGeometryExecute(object sender, CanExecuteRoutedEventArgs e) {
             e.CanExecute = uiInstance != null && uiInstance.getTemplates().Count >= 1;
         }
@@ -1986,6 +2003,7 @@ namespace FBE_CSharpUI {
             IsCtrlDown = false;
         }
 
+        /*
         private void CanSaveViewExecute(object sender, CanExecuteRoutedEventArgs e) {
             e.CanExecute = true;
         }
@@ -2148,7 +2166,7 @@ namespace FBE_CSharpUI {
             UpdateSavedViewMenuItems();
             RefreshUIState();
         }
-
+        */
         private void File_Open_Click(object sender, RoutedEventArgs e) {
             // Configure save file dialog box
             OpenFileDialog dlg = new OpenFileDialog();
@@ -2174,6 +2192,7 @@ namespace FBE_CSharpUI {
             }
         }
 
+        /*
         private void Drawing_Type_Mesh_Click(object sender, RoutedEventArgs e) {
             // TODO: implement
         }
@@ -2193,7 +2212,8 @@ namespace FBE_CSharpUI {
         private void Mesh_Type_Box_Click(object sender, RoutedEventArgs e) {
             // TODO: implement
         }
-
+        */
+        /*
         private void Print_Generate_STL_Click(object sender, RoutedEventArgs e) {
             Window window = new Window();
             window.Width = 400;
@@ -2226,6 +2246,8 @@ namespace FBE_CSharpUI {
             };
             window.ShowDialog();
         }
+        */
+        /*
         private void Optimize_Speed_Click(object sender, RoutedEventArgs e)
         {
             uiInstance.optimizeSpeed();
@@ -2251,7 +2273,8 @@ namespace FBE_CSharpUI {
             uiInstance.optimizeNone();
             RefreshViews();
         }
-
+        */
+        /*
         private void RefreshSTLView() {
             //default paths
             var hardStlPath = @"..\..\data\prints\result_hard.stl";
@@ -2274,6 +2297,7 @@ namespace FBE_CSharpUI {
         private void Print_Refresh_Click(object sender, RoutedEventArgs e) {
             RefreshSTLView();
         }
+         */
 
         private void PointerButton_OnClick(object sender, RoutedEventArgs e) {
             _uiStates.IsRotating = false;
@@ -2381,19 +2405,21 @@ namespace FBE_CSharpUI {
             }
             else if (selection.Type == Selection.SelectionType.Template) {
                 var tmpl = selection.SelectedTemplate;
+                /*
                 var openscadDesign = tmpl.GetOpenscadDesign();
                 if (openscadDesign != null) {
                     OpenscadDesign design =
                         ProtoBuf.Serializer.Deserialize<OpenscadDesign>(new MemoryStream(openscadDesign));
                     ScadEditor.Edit(design);
                 }
+                */
             }
 
             //JointInfoBox.IsEnabled = isConnection;
             //JointInfoAngleBox.IsEnabled = isConnection;
         }
 
-
+        /*
         private void UpdateSymmetrySelectionUI()
         {
            if (!uiInstance.hasMainWorkingTemp())
@@ -2411,7 +2437,7 @@ namespace FBE_CSharpUI {
             }
         }
 
-
+        */
         private void updateGaitSuggestionsTab()
         {
 
@@ -2514,7 +2540,19 @@ private void updateSquenceGaitTab()
 private void ChangeMotionSequenceSize_clicked(object sender, RoutedEventArgs e){
     if (uiInstance != null)
     {
-        int val = (int)InputMotionSequenceSize.Value;
+        int val = (int)(InputMotionSequenceSize.Minimum);
+        if (InputMotionSequenceSize.Value != null)
+        {
+            val = (int)InputMotionSequenceSize.Value;
+        }
+        else
+        {
+            InputMotionSequenceSize.Value = InputMotionSequenceSize.Minimum;
+        }
+        if (val < InputMotionSequenceSize.Minimum) {
+            val = (int)(InputMotionSequenceSize.Minimum);
+            InputMotionSequenceSize.Value = InputMotionSequenceSize.Minimum;
+        }
         _uiStates.motionSequenceLen = val;
         updateSquenceGaitTab();
         int addLen = val - currentSequence.Count;
@@ -2708,7 +2746,7 @@ private void handleUpdatesFromTopoChange()
     }
     //updateTheSelectedGaitTab();
     //uiInstance.updateControllers(); // the get joint choices already does it
-    UpdateSymmetrySelectionUI();
+    //UpdateSymmetrySelectionUI();
     _uiStates.selecteMetric_Gait = -1;
     _uiStates.selecteMetric_Objective = -1;
 
@@ -2779,6 +2817,7 @@ private void handleUpdatesFromTopoChange()
             }
         }
         */
+        /*
         private void SaveScadDesignButtonClick(object sender, RoutedEventArgs e) {
             var selection = _uiStates.Selection;
             if (selection.Type == Selection.SelectionType.Template) {
@@ -2789,6 +2828,7 @@ private void handleUpdatesFromTopoChange()
                 RefreshViews();
             }
         }
+        */
 
         private void HandlePreventFurtherOverlapCommand(object sender, ExecutedRoutedEventArgs e) {
             _uiStates.PreventCollisions = !_uiStates.PreventCollisions;

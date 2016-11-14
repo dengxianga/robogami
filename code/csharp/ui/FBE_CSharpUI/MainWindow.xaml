@@ -46,7 +46,7 @@
     </Window.Resources>
     <Window.CommandBindings>
         <CommandBinding Command="New" CanExecute="CanAlwaysExecute" Executed="HandleNewCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.DirectSave" CanExecute="CanAlwaysExecute" Executed="HandleDirectSave"></CommandBinding>
+        <!--<CommandBinding Command="self:UICommands.DirectSave" CanExecute="CanAlwaysExecute" Executed="HandleDirectSave"></CommandBinding>-->
         <CommandBinding Command="Save" CanExecute="CanSaveExecute" Executed="HandleSaveCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.SaveGeometry" CanExecute="CanSaveGeometryExecute" Executed="HandleSaveGeometryCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.SelectParent" CanExecute="CanSelectParentExecute" Executed="HandleSelectParentCommand"></CommandBinding>
@@ -58,36 +58,39 @@
         <CommandBinding Command="self:UICommands.ChangeAnimParams" CanExecute="CanAnimateSlowExecute" Executed="HandleEditAnimParams"></CommandBinding>
         <CommandBinding Command="self:UICommands.GuideManipulation" CanExecute="CanGuideManipulationExecute" Executed="HandleGuideManipulationCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.DisableGuidance" CanExecute="CanAlwaysExecute" Executed="HandleDisableAllStabilityGuidance"></CommandBinding>
-        <CommandBinding Command="self:UICommands.ForwardTravelA" CanExecute="CanAlwaysExecute" Executed="HandlForwardTravelA"></CommandBinding>
+        <!--<CommandBinding Command="self:UICommands.ForwardTravelA" CanExecute="CanAlwaysExecute" Executed="HandlForwardTravelA"></CommandBinding>
         <CommandBinding Command="self:UICommands.ForwardTravelB" CanExecute="CanAlwaysExecute" Executed="HandleForwardTravelB"></CommandBinding>
         <CommandBinding Command="self:UICommands.NoTask" CanExecute="CanAlwaysExecute" Executed="HandleNoTask"></CommandBinding>
         <CommandBinding Command="self:UICommands.DesignCar" CanExecute="CanAlwaysExecute" Executed="HandleDesignCar"></CommandBinding>
+        -->
         <CommandBinding Command="self:UICommands.ViewGait" CanExecute="CanViewGaitExecute" Executed="HandleViewGaitCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.ViewAnimPoses" CanExecute="CanViewGaitExecute" Executed="HandleViewAnimPosesCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.AvoidObstacle" CanExecute="CanAlwaysExecute" Executed="HandleAvoidObstacle"></CommandBinding>
+        <!--<CommandBinding Command="self:UICommands.AvoidObstacle" CanExecute="CanAlwaysExecute" Executed="HandleAvoidObstacle"></CommandBinding>-->
         <CommandBinding Command="self:UICommands.Stablize" CanExecute="CanStablizeExecute" Executed="HandleStablizeCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.SnapToGround" CanExecute="CanSnapToGroundExecute" Executed="HandleSnapToGroundCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.DeleteTemplate" CanExecute="CanDeleteTemplateExecute" Executed="HandleDeleteTemplateCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.UpdateConnectors" CanExecute="CanAddConnectorExecute" Executed="HandleAddConnectorCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.HighlightConnectors" CanExecute="CanAlwaysExecute" Executed="HandleShowConnectorsCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.UsePerspectiveCamera" CanExecute="CanAlwaysExecute" Executed="HandleUsePerspectiveCameraCommand"></CommandBinding>
+        <!--<CommandBinding Command="self:UICommands.UsePerspectiveCamera" CanExecute="CanAlwaysExecute" Executed="HandleUsePerspectiveCameraCommand"></CommandBinding>-->
         <CommandBinding Command="self:UICommands.Connect" CanExecute="CanConnectExecute" Executed="HandleConnectCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.Snap" CanExecute="CanSnapExecute" Executed="HandleSnapCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.MultiSnap" CanExecute="CanMultiSnapExecute" Executed="HandleMultiSnapCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.ChangeMaterial" CanExecute="CanChangeMaterialExecute" Executed="HandleChangeMaterialCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.Exit" CanExecute="CanAlwaysExecute" Executed="HandleExitCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.SaveView" CanExecute="CanSaveViewExecute" Executed="HandleSaveViewCommand"></CommandBinding>
+        <!--<CommandBinding Command="self:UICommands.SaveView" CanExecute="CanSaveViewExecute" Executed="HandleSaveViewCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.DeleteAllSavedViews" CanExecute="CanDeleteAllSavedViewsExecute" Executed="HandleDeleteAllSavedViewsCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.LoadView1" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.LoadView2" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.LoadView3" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.LoadView4" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>
-        <CommandBinding Command="self:UICommands.PreventFurtherOverlap" CanExecute="CanAlwaysExecute" Executed="HandlePreventFurtherOverlapCommand"></CommandBinding>
+        <CommandBinding Command="self:UICommands.LoadView4" CanExecute="CanLoadViewExecute" Executed="HandleLoadViewCommand"></CommandBinding>-->
+        <!--<CommandBinding Command="self:UICommands.PreventFurtherOverlap" CanExecute="CanAlwaysExecute" Executed="HandlePreventFurtherOverlapCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.ForceReflection" CanExecute="CanAlwaysExecute" Executed="HandleForceReflectionCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.ShowOverlaps" CanExecute="CanAlwaysExecute" Executed="HandleShowOverlapsCommand"></CommandBinding>
         <CommandBinding Command="self:UICommands.RevertToOriginal" CanExecute="CanAlwaysExecute" Executed="HandleRevertToOriginal"></CommandBinding>
+        -->
     </Window.CommandBindings>
     <DockPanel>
+        <!--
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Command="New">
@@ -293,6 +296,7 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+        !-->
         <ToolBarPanel DockPanel.Dock="Top">
             <ToolBar>
                 <Button Command="New">
@@ -301,18 +305,22 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">New</TextBlock>
                     </StackPanel>
                 </Button>
+                <!--
                 <Button Command="self:UICommands.DirectSave">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=saveButtonImage}" Width="24"></self:AutoGreyableImage>
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Save</TextBlock>
                     </StackPanel>
                 </Button>     
+                -->
+                <!--
                 <Button Command="self:UICommands.SelectParent">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=treeButtonImage}" Width="24"></self:AutoGreyableImage>
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Select Parent</TextBlock>
                     </StackPanel>
                 </Button>
+                -->
                 <!--                <Button Command="self:UICommands.SelectChild">-->
                 <!--                    <StackPanel Orientation="Horizontal">-->
                 <!--                        <self:AutoGreyableImage Source="{StaticResource ResourceKey=DownButtonImage}" Width="24"></self:AutoGreyableImage>-->
@@ -344,6 +352,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
                     </StackPanel>
                 </Button>-->
+                <!--
                 <Button Click="HandleStartTimer"  >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Start Task</TextBlock>
@@ -354,6 +363,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">End Task</TextBlock>
                     </StackPanel>
                 </Button>
+                -->
                 <Button Command="self:UICommands.Stablize" Visibility="Collapsed" >
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=StablizeButtonImage}" Width="24"></self:AutoGreyableImage>
@@ -366,6 +376,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Guide Manipulation</TextBlock>
                     </StackPanel>
                 </RadioButton>
+                <!--
                 <Button Command="self:UICommands.UpdateConnectors" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=ConnectorButtonImage}" Width="24"></self:AutoGreyableImage>
@@ -385,6 +396,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Move</TextBlock>
                     </StackPanel>
                 </RadioButton>
+                -->
                 <RadioButton x:Name="RotationButton" Click="RotationButton_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=rotateButtonImage}" Width="24"></self:AutoGreyableImage>
@@ -411,6 +423,7 @@
                 </RadioButton>
                 <ToolBar>
                 </ToolBar>
+                <!--
                 <RadioButton Name ="ShowGhost" GroupName="ShowGhost" Click="ShowGhost_onClick" Visibility="Collapsed">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=translatePartButtonImage}" Width="20"></self:AutoGreyableImage>
@@ -429,6 +442,7 @@
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Optimize</TextBlock>
                     </StackPanel>
                 </Button>
+                -->
             </ToolBar>
         </ToolBarPanel>
         <Grid x:Name="ContainerGrid">
@@ -517,12 +531,15 @@
                     <Grid Background="#FFE5E5E5"/>
                 </TabItem>-->
             </TabControl>
-            <TabControl Grid.Row="0" Grid.RowSpan="3" Grid.Column="2">
+            <DockPanel Grid.Row="0" Grid.RowSpan="3" Grid.Column="2">
+                <!--
                 <TabItem Header="Drawing">
                     <Grid Background="#FFE5E5E5">
                         <Canvas Background="#20000000" x:Name="DrawingCanvas2" Grid.ColumnSpan="2"></Canvas>
                     </Grid>
                 </TabItem>
+                -->
+                <!--
                 <TabItem Header="SCAD" Visibility="Collapsed">
                     <DockPanel LastChildFill="True">
                         <Button DockPanel.Dock="Bottom" Margin="0 5 0 0" Click="SaveScadDesignButtonClick">Save</Button>
@@ -531,11 +548,15 @@
                         </self:SCADEditor>
                     </DockPanel>
                 </TabItem>
+                -->
+                <!--
                 <TabItem Header="Print">
                     <Grid>
                         <h:HelixViewport3D x:Name="PrintView"></h:HelixViewport3D>
                     </Grid>
                 </TabItem>
+                -->
+                <!--
                 <TabItem Header="Parameters" Visibility="Collapsed">
                     <Grid Background="#FFF7F7F7">
                         <Grid.ColumnDefinitions>
@@ -545,7 +566,8 @@
                         <StackPanel Height="451" HorizontalAlignment="Left" Name="stackPanelParameters" VerticalAlignment="Top" Width="180" Grid.ColumnSpan="2" Background="#FFEFEFEF"></StackPanel>
                     </Grid>
                 </TabItem>
-                <TabItem Header="Metrics" IsSelected="true">
+                -->
+                <!--<TabItem Header="Metrics" IsSelected="true">-->
                     <Grid>
                         <DataGrid Name="MetricsGrid" IsReadOnly="True">
                             <DataGrid.Columns>
@@ -692,7 +714,8 @@
                         <Label Content="Trajectory:" Margin="0,350,0,0"/>
                         <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="0,370,0,24" Grid.ColumnSpan="2"></Canvas>
                     </Grid>
-                </TabItem>
+                <!--</TabItem>-->
+                <!--
                 <TabItem Header="Symmetry">
                     <Grid>
                         <ScrollViewer>
@@ -728,8 +751,8 @@
                         </local:TreeListView>
                     </Grid>
                 </TabItem>
-
-            </TabControl>
+            -->
+            </DockPanel>
 
 
             <TabControl Grid.Row="3" Grid.ColumnSpan="2" Name="GaitTabControl" SelectionChanged="updateTheSelectedGaitTab_clicked" >
@@ -815,12 +838,16 @@
                         
                         <Label Content="Motion sequence:" Margin="20,0,0 0" Grid.Row="2"></Label>
 
-                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,0,0" Grid.Row="2" >
+                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,200,0" Grid.Row="2" >
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
                         </Button>
 
+                        <Button Name ="StopAnimateSequence" Width="100" Click="StopAnimate_clicked"  VerticalAlignment="Top" HorizontalAlignment="Right"   Margin="50,0,50,0" IsEnabled="False" Grid.Row="2">
+                            <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stop</TextBlock>
+                        </Button>
+
                         <Label Content="Length of motion sequence:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
-                        <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
+                        <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" Minimum="0" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
 
                         <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas"></Canvas>
                     </Grid>
