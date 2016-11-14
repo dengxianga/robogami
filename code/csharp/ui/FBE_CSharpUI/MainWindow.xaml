@@ -6,7 +6,7 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:local="clr-namespace:External"
         Title="Interactive Robogami" Height="810" Width="1440" KeyDown="MainWindow_OnKeyDown" KeyUp="MainWindow_OnKeyUp"
-        Activated="MainWindow_OnActivated" Deactivated="MainWindow_OnDeactivated">
+        Activated="MainWindow_OnActivated" Deactivated="MainWindow_OnDeactivated" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.Resources>
         <ResourceDictionary>
             <BitmapImage x:Key="NewButtonImage" UriSource="Resources\new.png"></BitmapImage>

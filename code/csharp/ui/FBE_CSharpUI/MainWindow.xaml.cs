@@ -686,7 +686,8 @@ namespace FBE_CSharpUI {
 
             NewMeshView.ModelUpDirection = new Vector3D(0, 1, 0);
             NewMeshView.Camera.UpDirection = new Vector3D(0, 1, 0); //y up
-            ((PerspectiveCamera) NewMeshView.Camera).FieldOfView = 75;
+            //NewMeshView.Camera.Position = new Point3D(50, 450, 560);
+            ((PerspectiveCamera)NewMeshView.Camera).FieldOfView = 75;
 
             initializeUIStates();
             Debugging = new Debugging(_uiStates);
@@ -729,6 +730,7 @@ namespace FBE_CSharpUI {
             };
 
             UpdateSavedViewMenuItems();
+
             RefreshUIState();
 
             animateTimer = new Timer();
@@ -799,7 +801,9 @@ namespace FBE_CSharpUI {
                 Point3D center = templateToAdd.Center;
                 
                 //initiate the translation to translate this model to where the mouse is
+                //Console.WriteLine(e.GetPosition(NewMeshView));
                 Point3D? to = NewMeshView.Viewport.UnProject(e.GetPosition(NewMeshView));
+                //Console.WriteLine(to);
                 //Point3D? from = NewMeshView.Viewport.UnProject(new Point(NewMeshView.ActualWidth / 2, NewMeshView.ActualHeight / 2));
                 Point3D? from = center;
                 _uiStates.IsInitialDragging = true;
