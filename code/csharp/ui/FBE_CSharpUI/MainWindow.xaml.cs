@@ -808,6 +808,10 @@ namespace FBE_CSharpUI {
                 Point3D? from = center;
                 _uiStates.IsInitialDragging = true;
                 handleUpdatesFromShapeChange(wasEmptyBefore);
+
+                legsTab.IsEnabled = true;
+                wheelsTab.IsEnabled = true;
+                peripheralsTab.IsEnabled = true;
                   
 
                 if (to != null && from != null) {
@@ -1057,6 +1061,11 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
             RefreshUIState();
             clearScene();
+
+            bodiesTab.IsSelected = true;
+            legsTab.IsEnabled = false;
+            wheelsTab.IsEnabled = false;
+            peripheralsTab.IsEnabled = false;
         }
 
         private void CanSaveExecute(object sender, CanExecuteRoutedEventArgs e) {
@@ -2443,9 +2452,14 @@ namespace FBE_CSharpUI {
                         updateListOfSavedGait(-1);
 
                         EditGaitTab.IsEnabled = true;
+                        EditGaitTab.IsSelected = true;
                         SequenceTab.IsEnabled = true;
 
-                        EditGaitTab.IsSelected = true;
+                        if (uiInstance.getNumGaits() >= 8)
+                        {
+                            SuggestionsTab.IsEnabled = false;
+                        }
+
 
                         updateEditGaitTab();
                         updateMetrics(); 
@@ -2709,6 +2723,7 @@ private void handleUpdatesFromTopoChange()
     jointChoices = uiInstance.GetJointChoices();
     updateListOfSavedGait(0);
 
+    SuggestionsTab.IsEnabled = true;
     SuggestionsTab.IsSelected = true;
     EditGaitTab.IsEnabled = false;
     SequenceTab.IsEnabled = false;

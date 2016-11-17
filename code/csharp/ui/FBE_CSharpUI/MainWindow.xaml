@@ -482,7 +482,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Legs" Name="legsTab" >
+                <TabItem Header="Legs" Name="legsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelLegs"/>
@@ -490,7 +490,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Wheels" Name="wheelsTab">
+                <TabItem Header="Wheels" Name="wheelsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelWheels"/>
@@ -506,7 +506,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Peripherals" Name= "peripheralsTab">
+                <TabItem Header="Peripherals" Name= "peripheralsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelPeripherals"/>
@@ -690,7 +690,7 @@
                             </DataGrid.Columns>
                         </DataGrid>
                         <Label Content="Trajectory:" Margin="0,350,0,0"/>
-                        <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="0,370,0,24" Grid.ColumnSpan="2"></Canvas>
+                        <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="10,370,10,24" Grid.ColumnSpan="2"></Canvas>
                     </Grid>
                 </TabItem>
                 <TabItem Header="Symmetry">
@@ -809,7 +809,7 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Gait Options:" Margin="20,0,0,0" Grid.Row="0"/>
-                        <Canvas x:Name="GaitOptionsCanvas" Grid.Row="0" ></Canvas>
+                        <Canvas x:Name="GaitOptionsCanvas" Grid.Row="0" Margin="0,25,0,0"></Canvas>
 
 
                         
@@ -823,10 +823,10 @@
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stop</TextBlock>
                         </Button>
 
-                        <Label Content="Length of motion sequence:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
+                        <Label Content="Sequence Length:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
                         <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" Minimum="0" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
 
-                        <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas"></Canvas>
+                        <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas" Margin="0,30,150,0"></Canvas>
                     </Grid>
                 </TabItem>
 
