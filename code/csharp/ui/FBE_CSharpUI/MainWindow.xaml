@@ -390,13 +390,13 @@
                     </StackPanel>
                 </ToggleButton>
                 <Separator></Separator>
+                -->
                 <RadioButton x:Name="PointerButton" Click="PointerButton_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=moveButtonImage}" Width="24"></self:AutoGreyableImage>
                         <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Move</TextBlock>
                     </StackPanel>
                 </RadioButton>
-                -->
                 <RadioButton x:Name="RotationButton" Click="RotationButton_OnClick">
                     <StackPanel Orientation="Horizontal">
                         <self:AutoGreyableImage Source="{StaticResource ResourceKey=rotateButtonImage}" Width="24"></self:AutoGreyableImage>
@@ -452,9 +452,9 @@
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="75*"/>
+                <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="500*"/>
-                <ColumnDefinition Width="217*"/>
+                <ColumnDefinition Width="200*"/>
             </Grid.ColumnDefinitions>
             <Grid x:Name="MeshView"  Grid.Column="1" Grid.RowSpan="2" Visibility="Collapsed"/>
             <Rectangle x:Name ="DeselectBox" Fill="White" Grid.Column ="1" Grid.RowSpan="1" Visibility="Visible"/>
@@ -496,7 +496,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Legs" Name="legsTab" >
+                <TabItem Header="Legs" Name="legsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelLegs"/>
@@ -504,7 +504,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Wheels" Name="wheelsTab">
+                <TabItem Header="Wheels" Name="wheelsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelWheels"/>
@@ -520,7 +520,7 @@
 
                     </Grid>
                 </TabItem>
-                <TabItem Header="Peripherals" Name= "peripheralsTab">
+                <TabItem Header="Peripherals" Name= "peripheralsTab" IsEnabled="False">
                     <Grid Background="#FFF7F7F7">
                         <ScrollViewer>
                             <WrapPanel x:Name="SidebarPanelPeripherals"/>
@@ -578,7 +578,7 @@
 
 
                         
-                        <DataGrid Name="MetricsGrid1" IsReadOnly="True" Margin="0,90,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics1_SelectionChanged" SelectionMode="Single"  ItemsSource="{Binding}" >
+                        <DataGrid Name="MetricsGrid1" IsReadOnly="True" Margin="0,100,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics1_SelectionChanged" SelectionMode="Single"  ItemsSource="{Binding}" >
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
@@ -641,7 +641,7 @@
                             </DataGrid.RowStyle>
                         </DataGrid>
 
-                        <DataGrid Name="MetricsGrid1B" IsReadOnly="True" Margin="0,220,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics2_SelectionChanged" SelectionMode="Single"   ItemsSource="{Binding}" >
+                        <DataGrid Name="MetricsGrid1B" IsReadOnly="True" Margin="0,320,0,15" AutoGenerateColumns="False" SelectionUnit="Cell" MouseUp="metrics2_SelectionChanged" SelectionMode="Single"   ItemsSource="{Binding}" >
                             <DataGrid.Resources>
                                 <Style TargetType="{x:Type DataGridCell}">
                                     <Style.Triggers>
@@ -697,22 +697,24 @@
                                     </Style.Triggers>
                                 </Style>
                             </DataGrid.RowStyle>
-                        </DataGrid>                       
-                        <DataGrid Name="MetricsGrid2" IsReadOnly="True" Margin="0,200,0,15" Visibility="Collapsed">
+                        </DataGrid>              
+                        <!--
+                        <DataGrid Name="MetricsGrid2" IsReadOnly="True" Margin="0,400,0,15" Visibility="Collapsed">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="" Binding="{Binding Path=Param}" />
                                 <DataGridTextColumn Header="Speed Objective" Binding="{Binding Path=error1}" />
                                 <DataGridTextColumn Header="Wobbliness Objective" Binding="{Binding Path=error2}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                        <DataGrid Name="MetricsGridSpeed" IsReadOnly="True" Margin="0,360,0,24" Visibility="Collapsed">
+                        <DataGrid Name="MetricsGridSpeed" IsReadOnly="True" Margin="0,560,0,24" Visibility="Collapsed">
                             <DataGrid.Columns>
                                 <DataGridTextColumn Header="" Binding="{Binding Path=Name}" />
                                 <DataGridTextColumn Header="" Binding="{Binding Path= val}" />
                             </DataGrid.Columns>
                         </DataGrid>
-                        <Label Content="Trajectory:" Margin="0,350,0,0"/>
-                        <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="0,370,0,24" Grid.ColumnSpan="2"></Canvas>
+                        -->
+                        <Label Content="Trajectory:" Margin="0,550,0,0"/>
+                        <Canvas Background="#FFFFFFFF" x:Name="DrawingCanvas" Margin="10,580,10,24" Grid.ColumnSpan="2"></Canvas>
                     </Grid>
                 <!--</TabItem>-->
                 <!--
@@ -832,24 +834,22 @@
                         </Grid.RowDefinitions>
 
                         <Label Content="Gait Options:" Margin="20,0,0,0" Grid.Row="0"/>
-                        <Canvas x:Name="GaitOptionsCanvas" Grid.Row="0" ></Canvas>
-
-
+                        <Canvas x:Name="GaitOptionsCanvas" Grid.Row="0" Margin="0,25,0,0"></Canvas>
                         
                         <Label Content="Motion sequence:" Margin="20,0,0 0" Grid.Row="2"></Label>
 
-                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,200,0" Grid.Row="2" >
+                        <Button Width="100" Click="AnimateSequence_clicked" VerticalAlignment="Top" HorizontalAlignment="Right"  Margin="100,0,150,0" Grid.Row="2" >
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Animate</TextBlock>
                         </Button>
 
-                        <Button Name ="StopAnimateSequence" Width="100" Click="StopAnimate_clicked"  VerticalAlignment="Top" HorizontalAlignment="Right"   Margin="50,0,50,0" IsEnabled="False" Grid.Row="2">
+                        <Button Name ="StopAnimateSequence" Width="100" Click="StopAnimate_clicked"  VerticalAlignment="Top" HorizontalAlignment="Right"   Margin="50,0,25,0" IsEnabled="False" Grid.Row="2">
                             <TextBlock VerticalAlignment="Center" Margin="3,0,0,0">Stop</TextBlock>
                         </Button>
 
-                        <Label Content="Length of motion sequence:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
+                        <Label Content="Sequence Length:                ." VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0 0" Grid.Row="2"></Label>
                         <xctk:IntegerUpDown Name="InputMotionSequenceSize" VerticalAlignment="Bottom" HorizontalAlignment="Right"   Text="length:" Margin="0,0,0 0" Height="30" Width="50" Value="5" Minimum="0" ValueChanged="ChangeMotionSequenceSize_clicked" Grid.Row="2"/>
 
-                        <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas"></Canvas>
+                        <Canvas x:Name="SequenceCanvas" Grid.Row="2" Loaded="updateSequenceCanvas" Margin="0,30,150,0"></Canvas>
                     </Grid>
                 </TabItem>
 

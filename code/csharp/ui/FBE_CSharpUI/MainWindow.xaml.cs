@@ -293,17 +293,17 @@ namespace FBE_CSharpUI {
             MetricsGrid.Items.Clear();
             MetricsGrid1.Items.Clear();
             MetricsGrid1B.Items.Clear();
-            MetricsGrid2.Items.Clear();
-            MetricsGridSpeed.Items.Clear();
-            MetricsGrid2.Visibility = System.Windows.Visibility.Collapsed;
+            //MetricsGrid2.Items.Clear();
+            //MetricsGridSpeed.Items.Clear();
+            //MetricsGrid2.Visibility = System.Windows.Visibility.Collapsed;
             MetricsGrid1.Visibility = System.Windows.Visibility.Visible;
             MetricsGrid1B.Visibility = System.Windows.Visibility.Visible;
             MetricsGrid.Visibility = System.Windows.Visibility.Visible;
-            MetricsGridSpeed.Visibility = System.Windows.Visibility.Collapsed;
+            //MetricsGridSpeed.Visibility = System.Windows.Visibility.Collapsed;
 
             if (_uiStates.AvoidObstacle)
             {
-                MetricsGridSpeed.Visibility = System.Windows.Visibility.Visible;
+                //MetricsGridSpeed.Visibility = System.Windows.Visibility.Visible;
             }
           
             DrawingCanvas.Children.Clear();
@@ -317,7 +317,7 @@ namespace FBE_CSharpUI {
 
             if (_uiStates.ForwardTravel) // just update one gait and show one tab
             {
-                MetricsGrid2.Visibility = System.Windows.Visibility.Visible;
+                //MetricsGrid2.Visibility = System.Windows.Visibility.Visible;
                 MetricsGrid1B.Visibility = System.Windows.Visibility.Visible;
                 MetricsGrid1B.Visibility = System.Windows.Visibility.Collapsed;
                 MetricsGrid.Visibility = System.Windows.Visibility.Collapsed;
@@ -339,7 +339,7 @@ namespace FBE_CSharpUI {
                     achievedTaskTopping = true;
                 }
 
-                MetricsGrid2.Items.Add(new { Param = name, error1 = achievedTaskSpeed, error2 = achievedTaskTopping });
+                //MetricsGrid2.Items.Add(new { Param = name, error1 = achievedTaskSpeed, error2 = achievedTaskTopping });
                 MetricsGrid1.Items.Add(new
                 {
                     modelName = name,
@@ -380,7 +380,7 @@ namespace FBE_CSharpUI {
                         uiInstance.updateMetrics(_uiStates.NAnimRounds, _uiStates.DeltaAnim, true);
                         double totaltime = uiInstance.getTotalSequenceTime();
                         //Console.WriteLine("total time" + totaltime);
-                        MetricsGridSpeed.Items.Add(new { Name = "Total Sequence time: ", val = String.Format("{0:0.00}", totaltime) });
+                        //MetricsGridSpeed.Items.Add(new { Name = "Total Sequence time: ", val = String.Format("{0:0.00}", totaltime) });
 
                     }
 
@@ -633,11 +633,11 @@ namespace FBE_CSharpUI {
         {
 
             OverlapPreventionHack.countOverlapnessDelegate = CountOverlapness;
-            try
+            //try
             {
                 InitializeComponent();
             }
-            catch (SystemException e)
+            //catch (SystemException e)
             {
             }
 
@@ -809,6 +809,10 @@ namespace FBE_CSharpUI {
                 Point3D? from = center;
                 _uiStates.IsInitialDragging = true;
                 handleUpdatesFromShapeChange(wasEmptyBefore);
+
+                legsTab.IsEnabled = true;
+                wheelsTab.IsEnabled = true;
+                peripheralsTab.IsEnabled = true;
                   
 
                 if (to != null && from != null) {
@@ -1067,6 +1071,11 @@ namespace FBE_CSharpUI {
             _uiStates.SnappingState = null;
             RefreshUIState();
             clearScene();
+
+            bodiesTab.IsSelected = true;
+            legsTab.IsEnabled = false;
+            wheelsTab.IsEnabled = false;
+            peripheralsTab.IsEnabled = false;
         }
 
         private void CanSaveExecute(object sender, CanExecuteRoutedEventArgs e) {
@@ -2465,9 +2474,14 @@ namespace FBE_CSharpUI {
                         updateListOfSavedGait(-1);
 
                         EditGaitTab.IsEnabled = true;
+                        EditGaitTab.IsSelected = true;
                         SequenceTab.IsEnabled = true;
 
-                        EditGaitTab.IsSelected = true;
+                        if (uiInstance.getNumGaits() >= 8)
+                        {
+                            SuggestionsTab.IsEnabled = false;
+                        }
+
 
                         updateEditGaitTab();
                         updateMetrics(); 
@@ -2731,6 +2745,7 @@ private void handleUpdatesFromTopoChange()
     jointChoices = uiInstance.GetJointChoices();
     updateListOfSavedGait(0);
 
+    SuggestionsTab.IsEnabled = true;
     SuggestionsTab.IsSelected = true;
     EditGaitTab.IsEnabled = false;
     SequenceTab.IsEnabled = false;

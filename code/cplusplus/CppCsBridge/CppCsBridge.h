@@ -1534,6 +1534,10 @@ namespace CppCsBridge {
 				gait->createNewGaitOptionFromSuggestion(choice);
 		}
 
+		int getNumGaits() {
+			return ui->workingTemplates[0]->kinchain->getNSavedGaits();
+		}
+
 		JointChoices^ GetJointChoices() {
 			if(ui->workingTemplates.size() >0){
  				auto wt = ui->workingTemplates[0];

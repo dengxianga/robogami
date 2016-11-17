@@ -351,10 +351,10 @@ namespace FBE_CSharpUI
             double height = mainCanvas.ActualHeight ;
             if (width > 0)
             {
-                double boxHeight = 0.4 * height;
+                double boxHeight = 0.8 * height;
                 double boxWidth = Math.Min(100, (0.9 * width) / sequence.Count);
                 double marginWidth = 0.5 * (width - sequence.Count * boxWidth) - 1;
-                double marginHeight = 0.3 * height;
+                double marginHeight = 0.1 * height;
 
                 for (int i = 0; i < sequence.Count; i++)
                 {
